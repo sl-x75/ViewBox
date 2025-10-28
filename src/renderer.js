@@ -285,8 +285,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // The paths inside the static one should not be animated, but should be visible with the right style.
     staticWrapper.querySelectorAll('path').forEach(p => {
       p.classList.remove('draw-path');
-      p.style.strokeWidth = '4px';
-      p.style.fill = 'rgba(0,0,0,0.05)';
+      p.style.strokeWidth = '5px';
+      p.style.fill = 'none';
       p.style.strokeOpacity = '0.95';
       p.setAttribute('vector-effect', 'non-scaling-stroke');
     });

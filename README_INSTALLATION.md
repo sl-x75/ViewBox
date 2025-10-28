@@ -2,14 +2,14 @@
 
 ## 📦 Download
 
-Go to the [**Releases page**](https://github.com/yourusername/bonsai-viewer/releases) and download the latest version for your platform.
+Go to the [**Releases page**](https://github.com/yourusername/ViewBox/releases) and download the latest version for your platform.
 
 ---
 
 ## 🍎 macOS Installation
 
 ### Download
-- `bonsai-viewer-x.x.x-mac-universal.dmg` (works on Intel and Apple Silicon)
+- `ViewBox-x.x.x-mac-universal.dmg` (works on Intel and Apple Silicon)
 
 ### Installation Steps
 
@@ -28,7 +28,7 @@ Go to the [**Releases page**](https://github.com/yourusername/bonsai-viewer/rele
 This app is **not notarized** with an Apple Developer certificate (costs $99/year). This is standard for open-source projects distributed via GitHub.
 
 **The app is safe** - you can:
-- ✅ Review the [source code](https://github.com/yourusername/bonsai-viewer)
+- ✅ Review the [source code](https://github.com/yourusername/ViewBox)
 - ✅ Build it yourself (see Building from Source below)
 - ✅ Check it has been downloaded by other users
 
@@ -37,13 +37,13 @@ This app is **not notarized** with an Apple Developer certificate (costs $99/yea
 **"App is damaged and can't be opened"**
 ```bash
 # Run this in Terminal:
-xattr -cr /Applications/bonsai-viewer.app
+xattr -cr /Applications/ViewBox.app
 ```
 
 **Still won't open?**
 1. System Settings → Privacy & Security
 2. Scroll to "Security" section
-3. You should see "bonsai-viewer was blocked..."
+3. You should see "ViewBox was blocked..."
 4. Click "Open Anyway"
 
 ---
@@ -51,8 +51,8 @@ xattr -cr /Applications/bonsai-viewer.app
 ## 🪟 Windows Installation
 
 ### Download
-- `bonsai-viewer-x.x.x-win-x64.exe` (installer)
-- `bonsai-viewer-x.x.x-win-x64.zip` (portable, no installation)
+- `ViewBox-x.x.x-win-x64.exe` (installer)
+- `ViewBox-x.x.x-win-x64.zip` (portable, no installation)
 
 ### Installation Steps (Installer)
 
@@ -66,13 +66,13 @@ xattr -cr /Applications/bonsai-viewer.app
    - Click **"Run anyway"**
 
 3. **Follow the installation wizard**
-4. **App will be installed** to `C:\Program Files\bonsai-viewer`
+4. **App will be installed** to `C:\Program Files\ViewBox`
 
 ### Portable Version (No Installation)
 
 1. Download the `.zip` file
 2. Extract it anywhere
-3. Run `bonsai-viewer.exe`
+3. Run `ViewBox.exe`
 4. Same SmartScreen warning applies (click "More info" → "Run anyway")
 
 ### Why This Warning?
@@ -98,20 +98,20 @@ This app is **not code-signed** (costs $60-400/year). This is standard for open-
 ## 🐧 Linux Installation
 
 ### Download Options
-- `bonsai-viewer-x.x.x-linux-x64.AppImage` (universal, recommended)
-- `bonsai-viewer-x.x.x-linux-amd64.deb` (Debian/Ubuntu)
+- `ViewBox-x.x.x-linux-x64.AppImage` (universal, recommended)
+- `ViewBox-x.x.x-linux-amd64.deb` (Debian/Ubuntu)
 
 ### AppImage (Universal)
 
 ```bash
 # 1. Download the AppImage
-wget https://github.com/yourusername/bonsai-viewer/releases/download/v1.0.0/bonsai-viewer-1.0.0-linux-x64.AppImage
+wget https://github.com/yourusername/ViewBox/releases/download/v1.0.0/ViewBox-1.0.0-linux-x64.AppImage
 
 # 2. Make it executable
-chmod +x bonsai-viewer-*.AppImage
+chmod +x ViewBox-*.AppImage
 
 # 3. Run it
-./bonsai-viewer-*.AppImage
+./ViewBox-*.AppImage
 ```
 
 **No installation needed!** Just download and run.
@@ -120,13 +120,13 @@ chmod +x bonsai-viewer-*.AppImage
 
 ```bash
 # Download the .deb file, then:
-sudo dpkg -i bonsai-viewer-*.deb
+sudo dpkg -i ViewBox-*.deb
 
 # If dependencies missing:
 sudo apt-get install -f
 
 # Run from terminal:
-bonsai-viewer
+ViewBox
 
 # Or find it in your applications menu
 ```
@@ -139,7 +139,7 @@ bonsai-viewer
 sudo apt install libfuse2
 
 # Or run with --no-sandbox
-./bonsai-viewer-*.AppImage --no-sandbox
+./ViewBox-*.AppImage --no-sandbox
 ```
 
 **Missing libraries?**
@@ -166,8 +166,8 @@ Don't trust pre-built binaries? Build it yourself!
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/bonsai-viewer.git
-cd bonsai-viewer
+git clone https://github.com/yourusername/ViewBox.git
+cd ViewBox
 
 # 2. Install dependencies
 npm install
@@ -176,15 +176,15 @@ npm install
 
 # macOS:
 npm run build:mac
-# Output: release/bonsai-viewer-x.x.x-mac-universal.dmg
+# Output: release/ViewBox-x.x.x-mac-universal.dmg
 
 # Windows:
 npm run build:win
-# Output: release/bonsai-viewer-x.x.x-win-x64.exe
+# Output: release/ViewBox-x.x.x-win-x64.exe
 
 # Linux:
 npm run build:linux
-# Output: release/bonsai-viewer-x.x.x-linux-x64.AppImage
+# Output: release/ViewBox-x.x.x-linux-x64.AppImage
 
 # 4. Install/run the built app
 ```
@@ -204,15 +204,15 @@ npm run dev
 ## 🆘 Still Having Issues?
 
 ### Check GitHub Issues
-[Search existing issues](https://github.com/yourusername/bonsai-viewer/issues) or create a new one.
+[Search existing issues](https://github.com/yourusername/ViewBox/issues) or create a new one.
 
 ### Common Solutions
 
 **"App crashes on startup"**
 - Delete app settings:
-  - macOS: `~/Library/Application Support/bonsai-viewer`
-  - Windows: `%APPDATA%\bonsai-viewer`
-  - Linux: `~/.config/bonsai-viewer`
+  - macOS: `~/Library/Application Support/ViewBox`
+  - Windows: `%APPDATA%\ViewBox`
+  - Linux: `~/.config/ViewBox`
 
 **"Can't open project files"**
 - Make sure you have read permissions for the folder
@@ -264,7 +264,7 @@ npm run dev
 ## 🆕 Updating
 
 ### Check for Updates
-1. Go to [Releases page](https://github.com/yourusername/bonsai-viewer/releases)
+1. Go to [Releases page](https://github.com/yourusername/ViewBox/releases)
 2. Download the latest version
 3. Install over the existing version
 
@@ -283,4 +283,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
 
 ---
 
-**Questions?** [Open an issue](https://github.com/yourusername/bonsai-viewer/issues/new) or [start a discussion](https://github.com/yourusername/bonsai-viewer/discussions).
+**Questions?** [Open an issue](https://github.com/yourusername/ViewBox/issues/new) or [start a discussion](https://github.com/yourusername/ViewBox/discussions).

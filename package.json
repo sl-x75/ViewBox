@@ -1,8 +1,8 @@
 {
-  "name": "bonsai-viewer",
-  "version": "1.0.0",
+  "name": "viewbox",
+  "version": "0.9.0",
   "description": "Electron + Tailwind + IFC viewer setup",
-  "author": "Your Name",
+  "author": "sl-x75",
   "type": "module",
   "main": "dist-electron/main.js",
   
@@ -17,8 +17,8 @@
   },
   
   "build": {
-    "appId": "com.bonsai.viewer",
-    "productName": "bonsai-viewer",
+    "appId": "com.ViewBox",
+    "productName": "ViewBox",
     
     "directories": {
       "output": "release"
