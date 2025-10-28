@@ -1,0 +1,20 @@
+/* 
+  Styles for selected text blocks (<g>) within the SVG canvas.
+  This provides the main visual feedback for selection and resizing.
+*/
+g[data-fo-id].fo-selected > rect {
+  stroke: #007bff !important; /* A bright, clear blue */
+  stroke-width: 2px !important; /* Make it clearly visible, accounting for SVG scaling */
+  stroke-dasharray: 6 3 !important; /* A clear dashed pattern */
+  stroke-opacity: 1 !important;
+}
+
+/* 
+  This class is added by interact.js while an element is being actively resized.
+  We can use this to provide additional feedback, like changing the cursor.
+*/
+g[data-fo-id].interact-resizable {
+  touch-action: none;
+}
+
+

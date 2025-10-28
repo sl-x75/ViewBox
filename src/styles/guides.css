@@ -1,0 +1,92 @@
+/* styles/guides.css */
+
+#viewer-container {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  grid-template-rows: 20px 1fr;
+  /* width and height are determined by the parent flex container */
+
+}
+
+/* #svg-viewer-content{
+  translate: -9.6px;
+} */
+
+/* #svg-viewer-content{
+  translate:  -9.48px  -1.5px;
+} */
+
+
+#ruler-corner {
+  grid-column: 1;
+  grid-row: 1;
+  background: #f0f0f0;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  z-index: 10;
+  visibility: hidden; /* Hide by default */
+}
+
+/* #scena-guides{
+  transform: translateY(69.9892px) !important;
+} */
+
+#h-guides {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative; /* Needed for guides library */
+  visibility: hidden; /* Hide by default */
+}
+
+#v-guides {
+  grid-column: 1;
+  grid-row: 2;
+  position: relative; /* Needed for guides library */
+  visibility: hidden; /* Hide by default */
+}
+
+#svg-wrapper {
+  grid-column: 2;
+  grid-row: 2;
+  overflow: hidden;
+  position: relative; /* This is important for the viewport child*/
+}
+
+#viewport {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+  /* width: 3.663%; */
+  /* height: auto; */
+  /* transform-origin: 50% 50%; */
+  /* top: 9%;
+   left: 20%; */
+  /* max-height: 100%;
+  
+  box-sizing: border-box; */
+  /* transform-origin:  0  0; */
+  /* transform: translate3d(384.84px, 175.647px, 0px) ; */
+}
+
+.selection-indicator {
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.moveable-control-box {
+  z-index: 1001 !important;
+}
+
+.moveable-control {
+  background: #007acc !important;
+  border: 2px solid white !important;
+}
+
+.moveable-rotation {
+  background: #ff6b35 !important;
+}
+
+/* Set crosshair cursor when in editing mode */
+#viewer-container.editing-mode #svg-viewer-content {
+  cursor: crosshair;
+}

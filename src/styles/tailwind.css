@@ -1,0 +1,511 @@
+@import "tailwindcss";
+@import "preline/variants.css";
+
+/* Preline UI */
+@source "node_modules/preline/dist/*.js";
+
+/* Plugins */
+@plugin "@tailwindcss/forms";
+
+
+@layer utilities {
+    .bg-mainColA {
+      background-color: #EBEBEC; /* manually coded hex for bg-gray-200 */
+    }
+  }
+
+@layer utilities {
+    .bg-hoverbutton {
+      background-color: #F1FBFF; /* manually coded hex for bg-gray-200 */
+    }
+  }
+
+@layer utilities {
+    .bg-blue {
+      background-color: #2b7fff; /* manually coded hex for bg-gray-200 */
+    }
+  }
+
+
+  @layer utilities {
+    .bg-cyan {
+      background-color: #f9fdfd; /* manually coded hex for bg-gray-200 */
+    }
+  }
+
+
+  @layer utilities {
+    .bg-green {
+      background-color: #deefdd; /* manually coded hex for bg-gray-200 */
+    }
+  }
+
+  @layer utilities {
+    .bg-yel {
+      background-color: #715363; /* manually coded hex for bg-gray-200 */
+    }
+  }
+
+
+  @layer utilities {
+    .rounded-lg {
+      border-radius: 0.5rem; /* 0.5rem (8px) */
+    }
+  }
+
+
+  @layer utilities {
+    .fixed {
+      border-radius: 0.5rem; /* 0.5rem (8px) */
+    }
+  }
+
+  @layer utilities {
+    .shadow-lg {
+      box-shadow: 10px 10px 10px -3px rgb(0 0 0 / 0.2); /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+  
+   @layer components {
+    .light-dark1 {
+      @apply bg-white  border-t-1 border-gray-300  dark:bg-[#3D424C] dark:border dark:border-gray-500 dark:shadow-neutral-700/70
+    }
+  }     
+
+    @layer components {
+    .light-dark2 {
+      @apply  bg-white border-gray-300 dark:bg-[#3A4150]  dark:border-gray-500 dark:shadow-neutral-700/70 dark:text-gray-400 outline-none
+    }
+  }
+
+     @layer components {
+    .light-dark3 {
+      @apply   bg-[#CDCDCA] dark:bg-[#31353C]  dark:border-gray-500 dark:shadow-neutral-700/70
+    }
+  }
+
+       @layer components {
+    .light-dark4 {
+      @apply  dark:bg-[#5c6e8d] dark:border-gray-700 dark:shadow-neutral-700/70 
+    }
+  }
+
+         @layer components {
+    .start-page {
+      @apply  flex-1 flex flex-col items-center justify-center bg-[#CDCDCA] dark:bg-[#31353C] pr-8 pl-8 pb-0 pt-20
+    }
+  }
+
+    @layer components {
+    .dark-textblock-4-ReadOnly {
+      @apply h-[40px] px-3 w-full  border-1 border-gray-100 rounded-md  font-[DejaVu_Sans] text-[12px] bg-gray-50  focus:border-gray-200 focus:ring-gray-200   text-green-700 text-center dark:bg-[#455269] dark:border-neutral-700 dark:shadow-neutral-700/70 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+
+   @layer components {
+    .patt-advise {
+      @apply py-[4px] px-3 w-fit  border-gray-100 rounded-md text-[10px] text-center focus:border-gray-200 focus:ring-gray-200 bg-gray-50
+    }
+  }   
+
+    @layer components {
+    .input-create-mode {
+      @apply text-lg  border-1 border-b-blue-500
+    }
+  }
+
+   @layer components {
+    .modal-warning {
+      @apply fixed top-18 right-8 bg-emerald-50 text-gray-400 px-4 py-2 rounded shadow-lg z-[100]
+    }
+  } 
+
+@layer components { 
+  .default-rules {
+    @apply absolute bottom-0 left-[0px] right-[0px]  text-[13px] h-6 z-10 flex flex-nowrap items-center gap-x-4;
+  }
+}
+ 
+
+  @layer components {
+    .coloris-input {
+      @apply p-1 h-10 w-10 block   cursor-pointer rounded-lg z-9999 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+  
+  @layer components {
+    .save-button {
+      @apply py-1  px-3 inline-flex items-center gap-x-2 text-sm font-medium text-[12px] h-6 rounded-sm border-1 border-white bg-gray-100 text-gray-500 hover:bg-[#F1FBFF] dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#454F65]  dark:text-gray-400/* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+
+    @layer components {
+    .new-rule-btn {
+      @apply py-[6px] px-3 text-xs  rounded-md border border-gray-200 text-blue-500 hover:bg-blue-50/* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+  
+  @layer components {
+    .search-buttons {
+      @apply py-[0px] px-3 inline-flex items-center gap-x-2 text-sm font-medium  text-[13px] rounded-sm border-1 border-white bg-gray-100 text-gray-500 hover:bg-[#F1FBFF] dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#454F65]  dark:text-gray-400/* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+
+  @layer components {
+    .save-css {
+      @apply py-[6px] px-4 inline-flex justify-center items-center gap-2 rounded-md border-1 border-white  bg-gray-50 text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 transition-all text-[12px] shrink-0 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+
+
+
+    @layer components {
+    .Open-a-Different-Project {
+      @apply mt-8 py-[6px] px-4 inline-flex justify-center items-center gap-2 rounded-md border  border-white bg-gray-100 text-gray-500 hover:bg-[#F1FBFF] dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#454F65]  dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 transition-all text-[12px] shrink-0 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+
+
+  @layer components {
+    .accordion-D-L-S {
+      @apply  py-1 inline-flex items-center gap-x-3 w-full  font-[DejaVu_Sans] text-[13px] text-start text-gray-600 hover:text-gray-800 rounded-lg /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  } 
+
+
+  @layer components {
+    .accordion-D-L-S-G {
+      @apply  py-1 inline-flex items-center gap-x-3 w-full  font-[DejaVu_Sans] text-[13px] text-start text-gray-600 hover:text-gray-800  dark:hover:text-gray-300 rounded-lg  dark:text-gray-400/* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  } 
+
+  @layer components {
+    .textblock-D-L-S-Art {
+      @apply block text-sm font-[DejaVu_Sans] text-[14px] text-gray-500 text-center /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+
+  @layer components {
+    .textblock-1-Art {
+      @apply block text-sm font-[DejaVu_Sans] text-[12px] text-gray-700 text-center /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+
+  @layer components {
+    .textblock-2-Css-Editor-labels {
+      @apply  text-sm font-[DejaVu_Sans] text-[12px] text-gray-700 text-center dark:text-gray-400 
+    }
+  }
+
+  @layer components {
+    .textblock-2-Css-Editor-labels2 {
+      @apply  text-sm font-[DejaVu_Sans] text-[12px] text-gray-700 text-justify dark:text-gray-400
+    }
+  }
+
+  @layer components {
+    .textblock-2-Css-Editor-Dropdown {
+      @apply block text-sm  font-[DejaVu_Sans] text-[12px] text-gray-700 text-center
+    }
+  }
+    @layer components {
+    .combobox-int {
+      @apply cursor-pointer py-2 px-4 w-full text-sm  font-[DejaVu_Sans] text-[12px] text-gray-700 text-center hover:bg-gray-100 rounded dark:text-gray-400 outline-gray-100
+    }
+  }
+
+      @layer components {
+    .active-drawing-info {
+      @apply flex-shrink-0  text-[12px] font-[DejaVu_Sans] text-gray-500 p-1  
+    }
+  }
+
+        @layer components {
+    .active-drawing-info-h2 {
+      @apply text-[14px]  font-[DejaVu_Sans] mb-1.5
+    }
+  }
+
+       @layer components {
+    .fill-type-button {
+      @apply w-40 shrink py-[6px] px-3 pr-3 border border-gray-200 rounded-md focus:border-gray-200 focus:ring-gray-200  font-[DejaVu_Sans] text-[12px] 
+     text-gray-700 text-start  h-[40px]   flex justify-between items-center outline-gray-100 dark:bg-[#3A4150] dark:border-gray-500 dark:shadow-neutral-700/70  dark:focus:border-gray-400 dark:text-gray-400
+    }
+  }
+  
+       @layer components {
+    .fill-pattern-options {
+      @apply absolute hidden  w-full max-h-48 border border-gray-200 rounded-md shadow-md focus:border-gray-200 focus:ring-gray-200  font-[DejaVu_Sans] text-[12px] 
+     text-gray-700 text-start  h-[40px]    justify-between items-center outline-gray-100 dark:bg-[#3A4150] dark:border-gray-500 dark:shadow-neutral-700/70  dark:focus:border-gray-400 dark:text-gray-400 
+     overflow-y-auto  py-2 px-4 text-sm   hover:bg-gray-100  
+    }
+  }
+
+  @layer components {
+    .textblock-3-ReadOnly {
+      @apply h-[40px] px-3 w-full  border-1 border-gray-100 rounded-md  font-[DejaVu_Sans] text-[12px] focus:border-gray-200 focus:ring-gray-200 bg-gray-50 text-green-700 text-center  dark:bg-[#455269] dark:border-neutral-700 dark:shadow-neutral-700/70/* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+
+
+    @layer components {
+    .readonly-warning {
+      @apply h-[40px] px-3 font-[DejaVu_Sans] w-full animate-pulse border-1 border-[#d4787e4b] rounded-md text-[12px] focus:border-gray-200 focus:ring-gray-200 bg-[#f8ffb05a] text-[#D56971] text-center   /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+
+
+
+/* Patern Editor */
+
+  @layer components {
+    .css-editor-slider {
+      @apply w-full bg-transparent cursor-pointer appearance-none disabled:opacity-50 disabled:pointer-events-none focus:outline-none [&::-webkit-slider-thumb]:w-2.5 [&::-webkit-slider-thumb]:h-2.5 [&::-webkit-slider-thumb]:-mt-0.25 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-[0_0_0_2.5px_rgba(139,163,120,0.776)] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:transition-all [&::-webkit-slider-thumb]:duration-150 [&::-webkit-slider-thumb]:ease-in-out   dark:[&::-webkit-slider-thumb]:bg-gray-700
+ [&::-moz-range-thumb]:w-1.5 [&::-moz-range-thumb]:h-1.5 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-4 [&::-moz-range-thumb]:border-blue-600 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:transition-all [&::-moz-range-thumb]:duration-150 [&::-moz-range-thumb]:ease-in-out [&::-webkit-slider-runnable-track]:w-full  [&::-webkit-slider-runnable-track]:h-2 [&::-webkit-slider-runnable-track]:bg-gray-100 [&::-webkit-slider-runnable-track]:rounded-full   dark:[&::-webkit-slider-runnable-track]:bg-gray-500
+ [&::-moz-range-track]:w-full [&::-moz-range-track]:h-2 [&::-moz-range-track]:bg-gray-100 [&::-moz-range-track]:rounded-full
+    }
+  }
+
+    @layer components {
+    .slider-num {
+    @apply text-[12px] w-8 font-[DejaVu_Sans] text-[#366e6f] text-center shrink-0 dark:text-green-300
+    }
+  }
+
+  
+   @layer components {
+    .radio{
+      @apply   inline-flex items-center gap-x-2.5 py-2.5 px-3   border  text-gray-800 -mt-px first:rounded-s-sm   last:rounded-e-md -ms-px   bg-white border-gray-200 dark:bg-[#3A4150] dark:border dark:border-gray-600 dark:shadow-neutral-700/70 
+    }
+  }
+
+     @layer components {
+    .radiolabels{
+      @apply   ms-5 mr-5 block w-full text-sm text-gray-600   font-[DejaVu_Sans] text-[12px] text-center gap-x-2 dark:text-gray-400 
+    } 
+  }
+
+
+
+   @layer components {
+    .dashedlines{
+      @apply py-[6px] px-3 w-25  rounded-md  focus:border-gray-200  focus:ring-gray-100  bg-white border-gray-200 dark:bg-[#454f65]  dark:border-gray-500 dark:shadow-neutral-700/70 dark:focus:border-gray-400
+       dark:focus:ring-gray-600 
+    }
+  }
+
+
+  @layer components {
+    .dropdown{
+      @apply w-40 shrink py-[6px] px-3 pr-3 border border-gray-200 rounded-md focus:border-gray-200 focus:ring-gray-200 block font-[DejaVu_Sans] text-[12px] 
+     text-gray-700 text-start  h-[40px] dark:bg-[#3A4150] dark:border-gray-500 dark:shadow-neutral-700/70  dark:focus:border-gray-400 dark:text-gray-400 ; 
+    }
+  }
+
+   @layer components {
+    .dropdownV2{
+      @apply  flex items-center gap-x-4     shrink cursor-pointer bg-white border border-gray-200 rounded-lg 
+    }
+  }
+
+  @layer components {
+    .coloris-input-pattern-editor {
+      @apply p-1 h-10 w-10 block  border-5 border-gray-200 cursor-pointer rounded-lg z-9999 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+
+  @layer components {
+    .pattern-editor-panel {
+      @apply  absolute w-74 bg-white rounded-[10px] shadow-md p-3  dark:bg-[#3A4150]  dark:shadow-neutral-700/70
+    }
+  } 
+
+   @layer components {
+    .pattern-rotate {
+      @apply   pl-0 w-12  bg-white rounded-md text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none   border-gray-300 dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#818a9c]
+    }
+  } 
+
+     @layer components {
+    .pattern-editor-labels {
+      @apply   text-sm text-[12px] font-[DejaVu_Sans] text-gray-700 w-12 pl-[5px] dark:text-gray-400 ; 
+    }
+  }  
+
+  @layer components {
+    .pattern-editor-sections {
+      @apply  text-center text-[12px]  font-[DejaVu_Sans]  bg-gray-200   rounded-sm justify-self-end-safe  text-gray-700   mb-3 mt-1    h-[20px]  w-[150px]   border-gray-300 dark:bg-[#818a9c] dark:border-dashed dark:border-gray-500 dark:shadow-neutral-700/70
+    }
+  }
+
+  @layer components {
+    #file-list li.active {
+      @apply text-[#4462a3] w-[140px] rounded-lg;
+    }
+  }
+
+    @layer components {
+    .startpage1 {
+      @apply text-lg font-[DejaVu_Sans]   text-gray-700 mt-15  pl-200 pb-0 dark:text-gray-400
+    }
+  }
+
+    @layer components {
+    .startpage1-V {
+      @apply text-lg font-[DejaVu_Sans]   text-gray-700 mt-35 ml-10   pb-120 pr-8
+    }
+  }
+  
+      @layer components {
+    .startpage2 {
+      @apply  font-light text-gray-500 -mt-0 mb-6 font-[DejaVu_Sans]   pl-240 pb-0
+    }
+  }
+
+    @layer components {
+    .startpage3 {
+      @apply text-lg font-[DejaVu_Sans]   text-gray-700 mb-3 dark:text-gray-400
+    }
+  }
+
+
+ .full .clr-field button {
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  border-width: 2;
+  border-radius: 5px;
+ }
+
+  .flex .clr-field button {
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  border-width: 2;
+  border-radius: 5px;
+ }
+
+
+/* Style for the PATTERN EDITOR pickers */
+.clr-pattern .clr-picker.clr-open {
+  position: absolute;
+  /* Adjust these values to position the pattern picker where you want it */
+  margin-top: -280px; 
+  margin-left: -20px;
+  border-radius: 10px;
+}
+
+.clr-picker.clr-editor.clr-default.clr-open.clr-top{
+  position: absolute;
+  margin-top: -30px;
+  margin-left: -85px;
+  border-radius: 10px;
+  scale: 100%;
+}
+
+.clr-picker.clr-editor.clr-light.clr-open.clr-top{
+  position: absolute;
+  margin-top: -30px;
+  margin-left: -85px;
+  border-radius: 10px;
+  scale: 100%;
+}
+
+.clr-picker.clr-picker.clr-editor.clr-light.clr-open.clr-left.clr-top{
+  position: absolute;
+  margin-top: -30px;
+  margin-left:  -4px;
+  border-radius: 10px;
+  scale: 100%;
+}
+
+
+.clr-picker.clr-pattern.clr-light.clr-open.clr-top{
+  position: absolute;
+  margin-top: -10px;
+  margin-left: -263px;
+  border-radius: 10px;
+  scale: 100%;
+}
+
+/* .clr-picker.clr-pattern.clr-light.clr-open.clr-left.clr-top{
+  position: absolute;
+  width: 15.3%;
+  margin-top: -237px;
+  margin-left: -36px;
+  border-radius: 10px;
+  scale: 100%;
+} */
+
+.clr-picker.clr-pattern.clr-light.clr-open.clr-left.clr-top{
+  position: absolute;
+  margin-top: -10px;
+  margin-left: -238px;
+  border-radius: 10px;
+  scale: 100%;
+}
+
+.clr-picker.clr-pattern.clr-light.clr-open{
+  position: absolute;
+  margin-top: -303px;
+  margin-left: -238px;
+  border-radius: 10px;
+  scale: 100%;
+}
+
+.clr-picker .clr-pattern .clr-light.clr-open{
+    position: absolute;
+  margin-top: -303px;
+  margin-left: -238px;
+  border-radius: 10px;
+  scale: 100%;
+}
+
+
+.clr-swatches {
+  order: 2;
+  width: calc(100% - 16px);
+  margin: 0 16px;
+}
+
+.clr-swatches.clr-swatches div {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 6px;
+  justify-content: center;
+}
+
+.clr-swatches button {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin: 0 4px 6px 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: inherit;
+  text-indent: -1000px;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.clr-swatches button:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: inherit;
+  background-color: currentColor;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+}
+
+
+
+.cm-panels .cm-panels-bottom{
+  color: none;
+  width: 0px;
+}

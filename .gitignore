@@ -1,0 +1,16 @@
+node_modules/
+dist/
+dist-electron/
+src/public/
+src/dist-electron/
+Helper_Project/
+preline/
+Console/
+Conv_History/
+.vscode/
+.env
+.DS_Store
+GEMINI.md
+docs/
+Conv_Gem.rtf
+release/
