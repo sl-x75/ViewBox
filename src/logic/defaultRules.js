@@ -38,7 +38,7 @@ export function initializeDefaultRules() {
       button.textContent = selector;
       button.dataset.selector = selector;
       // --- THIS IS THE FIX ---
-      button.className = 'text-gray-500 hover:text-green-700 hover:bg-[#BEE79E40] dark:hover:bg-[#3A4150]';
+      button.className = 'text-gray-500 hover:text-[#3b82f6] hover:bg-[#CDCDCA] dark:hover:bg-[#3A4150]';
       // --- END OF FIX ---
       list.appendChild(button);
     }

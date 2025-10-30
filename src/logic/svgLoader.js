@@ -2,7 +2,7 @@
 
 import fs from 'fs/promises';
 import path from 'path';
-import { getDrawingToAssetMap, isEditing, isManipulating, getManipulationEnabled, setIsLayoutFile, setLayoutFilePath, setOriginalLayoutContent, setCurrentSvgElement, setLayoutModified, setCurrentCssContent, setCurrentCssFile, getCurrentCssContent,  getCurrentMode, getViewer, setIsCssReadOnly, getCurrentCssAST} from '../state.js';
+import { getDrawingToAssetMap, isEditing, isManipulating, getManipulationEnabled, setIsLayoutFile, setLayoutFilePath, setOriginalLayoutContent, setCurrentSvgElement, setLayoutModified, setCurrentCssContent, setCurrentCssFile, getCurrentCssContent,  getCurrentMode, getViewer, setIsCssReadOnly, getCurrentCssAST, getIsCssReadOnly} from '../state.js';
 import { initializeManipulation, destroyManipulation } from '../manipulation.js';
 
 import { setupUIForSvg, setupUIForReadOnlyMode } from '../ui/init.js';
@@ -239,9 +239,9 @@ export async function loadSvgFile(filePath) {
           } else if ((key === 'Stylesheet' || key === 'Markers' || key === 'Symbols' || key === 'Patterns' || key === 'ShadingStyles') && typeof value === 'string') {
             const fullPath = path.join(projectPath, value);
             const displayValue = `./${path.basename(value)}`;
-            finalHTML = `<span class="font">${key}:</span> <span class="clickable-file-path text-blue-600 cursor-pointer hover:underline" data-full-file-path="${fullPath}">${displayValue}</span>`;
+            finalHTML = `<span class="font">${key}:</span> <span class="clickable-file-path text-[#3b82f6] cursor-pointer hover:underline" data-full-file-path="${fullPath}">${displayValue}</span>`;
           } else {
-            finalHTML = `<span class=" font-[Saira]  text-gray-500">${key}:</span> ${value}`;
+            finalHTML = `<span class=" font-[Saira]  text-[13px] text-gray-500">${key}:</span> ${value}`;
           }
           const p = document.createElement('p');
           p.innerHTML = finalHTML;
@@ -293,7 +293,9 @@ export async function loadSvgFile(filePath) {
         svgElement.prepend(styleTag);
       }
       styleTag.textContent = currentCss;
-      initializeDefaultRules();
+
+     // ALWAYS run this in editing mode. The UI functions will handle visibility.
+     initializeDefaultRules();
 
     } else {
       // --- CASE 2: All other scenarios (Not editing, or no assets). ---

@@ -39,22 +39,35 @@ export function setupUIForSvg(fileName) {
   const cssFileName = document.getElementById('css-file-name');
   const ruleTitleText = document.getElementById('rule-title-text');
   const ruleTitleContainer = document.getElementById('rule-title-container');
+  const defaultRulesContainer = document.getElementById('default-rules-container');
+  const defaultRulesList = document.getElementById('default-rules-list');
 
-  // Show the CSS editor and save button
+
+  // --- Show Core UI Elements ---
   cssRuleEditor.style.display = 'flex';
-  // Note: The visibility of saveCssButton is now fully controlled in svgLoader.js
   cssFileName.style.display = 'block';
   cssFileName.textContent = ` ${fileName}`;
 
-  // --- START: THIS IS THE CRITICAL FIX ---
-  // The logic to hide or show the active drawing info container has been
-  // completely removed from this function. Its visibility is now 100%
-  // controlled by the main logic in svgLoader.js, which prevents the race condition.
-  // --- END: THIS IS THE CRITICAL FIX ---
+  // --- THIS IS THE FIX: Explicitly manage the default rules container and button ---
+  if (defaultRulesContainer) {
+    defaultRulesContainer.style.display = 'flex';
+  }
+  if (defaultRulesList) {
+    defaultRulesList.style.display = 'flex'; // Ensure the list area is visible
+  }
+  if (saveCssButton) {
+    saveCssButton.style.display = 'inline-flex';
+    saveCssButton.textContent = 'Save CSS'; // Reset button text
+  }
 
-  // Reset the editor to its initial state
-  if (ruleTitleText) ruleTitleText.textContent = 'Click on an element to see its CSS rule';
-  if (ruleTitleContainer) ruleTitleContainer.classList.remove('bg-yellow-50', 'border-yellow-200', 'italic', 'text-yellow-800', 'placeholder-yellow-700',);
+  // --- THIS IS THE FIX: Explicitly reset UI state from read-only mode ---
+  if (ruleTitleText) {
+    ruleTitleText.textContent = 'Click on an element to see its CSS rule';
+  }
+  if (ruleTitleContainer) {
+    // Remove any special styling from read-only or create modes
+    ruleTitleContainer.classList.remove('readonly-warning', 'input-create-mode');
+  }
 
   // Explicitly hide all optional control groups to ensure a clean slate
   document.getElementById('fill-control-group').style.display = 'none';
@@ -143,26 +156,33 @@ export function setEditorMode(mode) {
   }
 }
 
-// --- START: NEW FUNCTION ---
 /**
  * Sets up the UI for the read-only mode when an external CSS file is missing.
  * @param {string} expectedFileName - The name of the CSS file that was expected.
  * @param {string} fullExpectedPath - The full path where the file should be saved.
  */
 export function setupUIForReadOnlyMode(expectedFileName, fullExpectedPath) {
-    // --- START: ADD LOGGING ---
   console.log(`[init.js] ==> Running setupUIForReadOnlyMode("${expectedFileName}")`);
-  // --- END: ADD LOGGING ---
   const cssRuleEditor = document.getElementById('css-editor-container');
   const saveCssButton = document.getElementById('save-css-button');
   const cssFileName = document.getElementById('css-file-name');
   const ruleTitleText = document.getElementById('rule-title-text');
   const ruleTitleContainer = document.getElementById('rule-title-container');
+  const defaultRulesContainer = document.getElementById('default-rules-container');
+  const defaultRulesList = document.getElementById('default-rules-list');
 
   // Ensure the main editor container is visible
   cssRuleEditor.style.display = 'flex';
   saveCssButton.style.display = 'inline-flex';
   cssFileName.style.display = 'block';
+
+  // Show the parent container but hide the (empty) list of default rules.
+  if (defaultRulesContainer) {
+    defaultRulesContainer.style.display = 'flex';
+  }
+  if (defaultRulesList) {
+    defaultRulesList.style.display = 'none';
+  }
 
   // Update UI text to inform the user
   cssFileName.textContent = `Using Internal Styles (Read-Only)`;
@@ -172,10 +192,7 @@ export function setupUIForReadOnlyMode(expectedFileName, fullExpectedPath) {
   // Store the full path on the button's dataset for the event listener to use
   saveCssButton.dataset.targetCssPath = fullExpectedPath;
 
-    // --- START: MODIFICATION ---
-  // Apply special styling to the read-only input to make it stand out as an advisory message.
   if (ruleTitleContainer) ruleTitleContainer.classList.add('readonly-warning');
-  // --- END: MODIFICATION ---
 
   // Explicitly hide all optional control groups to prevent interaction
   document.getElementById('fill-control-group').style.display = 'none';
@@ -186,7 +203,4 @@ export function setupUIForReadOnlyMode(expectedFileName, fullExpectedPath) {
   document.getElementById('marker-start-control-group').style.display = 'none';
   document.getElementById('marker-end-control-group').style.display = 'none';
   document.getElementById('text-controls-container').style.display = 'none';
-
-  
 }
-// --- END: NEW FUNCTION ---

@@ -2,10 +2,12 @@
   "name": "viewbox",
   "version": "0.9.0",
   "description": "Electron + Tailwind + IFC viewer setup",
-  "author": "sl-x75",
+  "author": {
+    "name": "sl-x75",
+    "email": "sl.labs2000@gmail.com"
+  },
   "type": "module",
   "main": "dist-electron/main.js",
-  
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -15,39 +17,37 @@
     "build:linux": "vite build && npx electron-builder --linux",
     "start": "electron ."
   },
-  
   "build": {
     "appId": "com.ViewBox",
     "productName": "ViewBox",
-    
     "directories": {
       "output": "release"
     },
-    
     "files": [
       "dist/**/*",
       "dist-electron/**/*",
       "package.json"
     ],
-    
     "extraResources": [
       {
         "from": "src/public/",
         "to": "public",
-        "filter": ["**/*"]
+        "filter": [
+          "**/*"
+        ]
       }
     ],
-    
     "asar": true,
     "asarUnpack": [
       "**/node_modules/web-ifc/**/*"
     ],
-    
     "mac": {
       "target": [
         {
           "target": "dmg",
-          "arch": ["universal"]
+          "arch": [
+            "universal"
+          ]
         }
       ],
       "category": "public.app-category.graphics-design",
@@ -58,7 +58,6 @@
       "entitlementsInherit": "build/entitlements.mac.plist",
       "artifactName": "${productName}-${version}-mac-${arch}.${ext}"
     },
-    
     "linux": {
       "target": [
         "AppImage",
@@ -68,22 +67,24 @@
       "icon": "build/icons/png/512x512.png",
       "artifactName": "${productName}-${version}-linux-${arch}.${ext}"
     },
-    
     "win": {
       "target": [
         {
           "target": "nsis",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         },
         {
           "target": "zip",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         }
       ],
       "icon": "build/icons/win/icon.ico",
       "artifactName": "${productName}-${version}-win-${arch}.${ext}"
     },
-    
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
@@ -91,7 +92,6 @@
       "createStartMenuShortcut": true
     }
   },
-  
   "devDependencies": {
     "@babel/runtime": "^7.28.4",
     "@tailwindcss/cli": "^4.1.11",
@@ -112,7 +112,6 @@
     "vite-plugin-electron-renderer": "^0.14.6",
     "wait-on": "^8.0.3"
   },
-  
   "dependencies": {
     "@codemirror/autocomplete": "^6.18.6",
     "@codemirror/lang-css": "^6.3.1",
@@ -148,6 +147,7 @@
     "lodash": "^4.17.21",
     "mime": "^4.1.0",
     "nouislider": "^15.8.1",
+    "tailwind-scrollbar-hide": "^4.0.0",
     "web-ifc": "^0.0.68"
   }
 }

@@ -26,7 +26,7 @@ protocol.registerSchemesAsPrivileged([
 ]);
 
 // Global flags and constants
-app.commandLine.appendSwitch('disable-gpu-vsync');
+// app.commandLine.appendSwitch('disable-gpu-vsync');
 let projectWatcher = null;
 
 // Determine if running in development or production
@@ -213,7 +213,10 @@ function createMenu() {
       submenu: [
         { role: 'reload' },
         { role: 'forceReload' },
-        { role: 'toggleDevTools' },
+        {
+         role: 'toggleDevTools',
+         accelerator: process.platform === 'darwin' ? 'Cmd+Option+I' : 'Ctrl+Shift+I'
+        },
         { type: 'separator' },
         { role: 'resetZoom' },
         { role: 'zoomIn' },

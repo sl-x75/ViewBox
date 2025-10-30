@@ -285,7 +285,7 @@
      <div id="start-page-content-wrapper" class="w-full" style="position: relative; z-index: 1;">
        <div class="w-full max-w-7xl">            <!-- wrapper to control alignment -->
          <h1 class="startpage1 text-left">BonsaiBim Manager & Css Editor</h1>
-         <p class="startpage2 text-left">2fillornot2fill</p>
+         <p class="startpage2 text-left">2fillornot2fill?</p>
        </div>
 
       <div class="w-full max-w-7xl bg-transparent">
@@ -313,9 +313,9 @@
         <!-- START: Preline Pattern Copy Modal -->
         <div id="pattern-copy-modal" class="hs-overlay hidden size-full fixed top-160 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1"   aria-labelledby="pattern-copy-modal-label">
           <div class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto ">
-            <div class="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl pointer-events-auto dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-neutral-700/70">
+            <div class="modal">
               <div class="flex justify-between items-center py-1 px-2 border-b border-gray-200 dark:border-neutral-70">
-                <h3 id="pattern-copy-modal-label" class="text-[13px] font-bold text-gray-800">
+                <h3 id="pattern-copy-modal-label" class="modal-label-h3">
                   Copy Pattern
                 </h3>
                 <button type="button" class="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200    focus:outline-hidden focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-neutral-400  dark:focus:bg-neutral-600" aria-label="Close" data-hs-overlay="#pattern-copy-modal">
@@ -327,17 +327,17 @@
                 </button>
               </div>
               <div class="p-4 overflow-y-auto">
-                <p id="pattern-copy-modal-body" class="text-gray-600 text-[13px] mb-4">
+                <p id="pattern-copy-modal-body" class="modal-label-p ">
                   <!-- Dynamic content will be inserted here -->
                 </p>
-                <label for="new-pattern-id-input" class="py-1 px-1 block w-full border-gray-200 rounded-lg text-sm text-[14px] focus:border-gray-200 focus:ring-border-gray-200  dark:bg-neutral-900 dark:border-neutral-700 dark:placeholder-neutral-500 dark:text-neutral-40">New Pattern ID</label>
-                <input type="text" id="new-pattern-id-input" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm text-[14px] focus:border-gray-200 focus:ring-border-gray-200" placeholder="Enter new unique ID" autofocus>
+                <label for="new-pattern-id-input" class="modal-label">New Pattern ID</label>
+                <input type="text" id="new-pattern-id-input" class="modal-input" placeholder="Enter new unique ID" autofocus>
               </div>
               <div class="flex justify-end items-center gap-x-2 py-2 px-4 ">
-                <button id="cancel-pattern-copy-btn" type="button" class="py-1 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-[13px] rounded-lg border border-gray-200 bg-white text-gray-500 shadow-sm hover:bg-gray-50" data-hs-overlay="#pattern-copy-modal">
+                <button id="cancel-pattern-copy-btn" type="button" class="save-button" data-hs-overlay="#pattern-copy-modal">
                   Cancel
                 </button>
-                <button id="confirm-pattern-copy-btn" type="button" class="py-1 px-3 inline-flex items-center gap-x-2 text-sm font-medium  text-[13px] rounded-lg border border-transparent bg-gray-200 text-gray-500 hover:bg-green-200">
+                <button id="confirm-pattern-copy-btn" type="button" class="save-button">
                   Create Copy
                 </button>
               </div>
@@ -356,7 +356,7 @@
            
            <!-- 1. THE SIDEBAR (with internal tabbing) -->
            <!-- `flex-1` makes this sidebar grow to fill the available vertical space, pushing the info panel down. -->
-           <div id="sidebar" class="flex-1 border-r-2  text-[13px] text-gray-800 flex flex-col overflow-hidden light-dark1">
+           <div id="sidebar" class="flex-1 border-r-1  text-[13px] text-gray-800 flex flex-col overflow-hidden light-dark1">
              
              <!-- Top Control Bar (Tabs + Back Button) -->
              <div class="flex-shrink-0 flex justify-between items-center p-3 ">
@@ -378,10 +378,10 @@
                      Project Name
                    </h1>
                  </div>
-                 <div id="file-list" class="hs-accordion-group px-6  flex-1 overflow-y-auto">
+                 <div id="file-list" class="hs-accordion-group px-6  flex-1 overflow-y-auto scrollbar-hide">
                    <!-- Drawings Accordion (Parent) -->
                    <div class="hs-accordion active" id="accordion-drawings">
-                     <button class="hs-accordion-toggle hs-accordion-active:text-[#4462a3] accordion-D-L-S-G" aria-expanded="true" aria-controls="accordion-drawings-content">
+                     <button class="hs-accordion-toggle hs-accordion-active:text-[#3b82f6] accordion-D-L-S-G" aria-expanded="true" aria-controls="accordion-drawings-content">
                        <svg class="hs-accordion-active:hidden block size-4" width="800" height="800" viewBox="-100 -150 1100 1100" class="prefix__prefix__icon" xmlns="http://www.w3.org/2000/svg" transform="scale(1.7)"><rect width="746.382" height="496.382" x="26.809" y="151.809" ry="27.858" opacity=".99" fill="#e8e9e8" fill-rule="evenodd" stroke="#b9b9b9" stroke-width="53.618" paint-order="markers stroke fill" rx="27.858"/><path d="M150.235 587.036h196.916a21.625 21.625 0 0017.778-33.938L140.072 228.432a16.351 16.351 0 00-29.794 9.368l1.097 310.513a38.86 38.86 0 0038.86 38.723z" opacity=".99" fill="none" stroke="#8a9f8a" stroke-width="27.5" paint-order="markers stroke fill"/><path d="M531.526 294.549a129.14 129.14 0 00-129.137 129.14 129.14 129.14 0 002.275 24.146h253.728a129.14 129.14 0 002.275-24.145 129.14 129.14 0 00-129.14-129.141z" opacity=".99" fill="none" stroke="#889d88" stroke-width="27.5" stroke-opacity=".992" paint-order="markers stroke fill"/></svg>
                        <svg class="hs-accordion-active:block hidden size-4" width="800" height="800" viewBox="-100 -150 1100 1100" class="prefix__prefix__icon" xmlns="http://www.w3.org/2000/svg" transform="scale(1.7)"><rect width="746.382" height="496.382" x="26.809" y="151.809" ry="27.858" opacity=".99" fill="#e8e9e8" fill-rule="evenodd" stroke="#b9b9b9" stroke-width="53.618" paint-order="markers stroke fill" rx="27.858"/><path d="M150.235 587.036h196.916a21.625 21.625 0 0017.778-33.938L140.072 228.432a16.351 16.351 0 00-29.794 9.368l1.097 310.513a38.86 38.86 0 0038.86 38.723z" opacity=".99" fill="none" stroke="#8a9f8a" stroke-width="27.5" paint-order="markers stroke fill"/><path d="M531.526 294.549a129.14 129.14 0 00-129.137 129.14 129.14 129.14 0 002.275 24.146h253.728a129.14 129.14 0 002.275-24.145 129.14 129.14 0 00-129.14-129.141z" opacity=".99" fill="none" stroke="#889d88" stroke-width="27.5" stroke-opacity=".992" paint-order="markers stroke fill"/></svg>
                        Drawings
@@ -392,7 +392,7 @@
                    </div>
                        <!-- Layouts Accordion -->
                        <div class="hs-accordion" id="accordion-layouts">
-                         <button class="hs-accordion-toggle hs-accordion-active:text-[#4462a3]  accordion-D-L-S-G" aria-expanded="false"  aria-controls="accordion-layouts-content">
+                         <button class="hs-accordion-toggle hs-accordion-active:text-[#3b82f6]  accordion-D-L-S-G" aria-expanded="false"  aria-controls="accordion-layouts-content">
                             <svg class="hs-accordion-active:hidden block size-4" width="800" height="800" viewBox="-100 -150 1100 1100" class="prefix__prefix__icon" xmlns="http://www.w3.org/2000/svg" transform="scale(1.7)"><rect width="746.382" height="496.382" x="26.809" y="151.809" ry="27.858" opacity=".99" fill="#e8e9e8" fill-rule="evenodd" stroke="#b9b9b9" stroke-width="53.618" paint-order="markers stroke fill" rx="27.858"/><g fill-rule="evenodd" paint-order="markers stroke fill"><rect width="224.297" height="221.973" x="58.561" y="179.034" ry="31.352" rx="31.352" opacity=".99" fill="#edd3d3ff"/><rect width="307.724" height="436.285" x="327.947" y="180.931" rx="31.352" ry="31.352" opacity=".99" fill="#d4d6ee"/><rect width="223.172" height="167.669" x="60.891" y="452.02" rx="31.352" ry="31.352" opacity=".99" fill="#f3efba"/></g></svg>
                            <svg class="hs-accordion-active:block hidden size-4" width="800" height="800" viewBox="-100 -150 1100 1100" class="prefix__prefix__icon" xmlns="http://www.w3.org/2000/svg" transform="scale(1.7)"><rect width="746.382" height="496.382" x="26.809" y="151.809" ry="27.858" opacity=".99" fill="#e8e9e8" fill-rule="evenodd" stroke="#b9b9b9" stroke-width="53.618" paint-order="markers stroke fill" rx="27.858"/><g fill-rule="evenodd" paint-order="markers stroke fill"><rect width="224.297" height="221.973" x="58.561" y="179.034" ry="31.352" rx="31.352" opacity=".99" fill="#edd3d3ff"/><rect width="307.724" height="436.285" x="327.947" y="180.931" rx="31.352" ry="31.352" opacity=".99" fill="#d4d6ee"/><rect width="223.172" height="167.669" x="60.891" y="452.02" rx="31.352" ry="31.352" opacity=".99" fill="#f3efba"/></g></svg>          
                            Layouts
@@ -403,7 +403,7 @@
                    </div>
                    <!-- Sheets Accordion -->
                    <div class="hs-accordion" id="accordion-sheets">
-                     <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 accordion-D-L-S-G" aria-expanded="false" aria-controls="accordion-sheets-content">
+                     <button class="hs-accordion-toggle hs-accordion-active:text-[#3b82f6] accordion-D-L-S-G" aria-expanded="false" aria-controls="accordion-sheets-content">
                          <svg class="hs-accordion-active:hidden block size-4" width="800" height="800" viewBox="-100 -150 1100 1100" class="prefix__prefix__icon" xmlns="http://www.w3.org/2000/svg" transform="scale(1.8)"><rect width="746.382" height="496.382" x="26.809" y="151.809" ry="27.858" opacity=".99" fill="#e8e9e8" fill-rule="evenodd" stroke="#b9b9b9" stroke-width="53.618" paint-order="markers stroke fill" rx="27.858"/><g paint-order="markers stroke fill"><rect width="225.326" height="222.021" x="58.047" y="179.034" ry="31.352" rx="31.352" opacity=".99" fill="none" stroke="#8a9f8a" stroke-width="19.25"/><rect width="307.724" height="436.285" x="327.947" y="180.931" rx="31.352" ry="31.352" opacity=".99" fill="none" stroke="#8a9f8a" stroke-width="19.25"/><path d="M62.797 450.194h218.516M62.797 472.087h218.516M62.797 493.98h218.516M62.797 515.874h218.516M62.797 539.66h218.516M62.797 561.554h218.516M62.797 583.447h218.516M62.797 605.34h218.516" opacity=".99" fill="#7f7e7e" fill-rule="evenodd" stroke="#767e76" stroke-width="8.25"/><rect width="77.346" height="446.352" x="673.675" y="173.801" rx="0" ry="0" opacity=".99" fill="#ce837e" fill-rule="evenodd"/></g></svg>
                        <svg class="hs-accordion-active:block hidden size-4" width="800" height="800" viewBox="-100 -150 1100 1100" class="prefix__prefix__icon" xmlns="http://www.w3.org/2000/svg" transform="scale(1.8)"><rect width="746.382" height="496.382" x="26.809" y="151.809" ry="27.858" opacity=".99" fill="#e8e9e8" fill-rule="evenodd" stroke="#b9b9b9" stroke-width="53.618" paint-order="markers stroke fill" rx="27.858"/><g paint-order="markers stroke fill"><rect width="225.326" height="222.021" x="58.047" y="179.034" ry="31.352" rx="31.352" opacity=".99" fill="none" stroke="#8a9f8a" stroke-width="19.25"/><rect width="307.724" height="436.285" x="327.947" y="180.931" rx="31.352" ry="31.352" opacity=".99" fill="none" stroke="#8a9f8a" stroke-width="19.25"/><path d="M62.797 450.194h218.516M62.797 472.087h218.516M62.797 493.98h218.516M62.797 515.874h218.516M62.797 539.66h218.516M62.797 561.554h218.516M62.797 583.447h218.516M62.797 605.34h218.516" opacity=".99" fill="#7f7e7e" fill-rule="evenodd" stroke="#767e76" stroke-width="8.25"/><rect width="77.346" height="446.352" x="673.675" y="173.801" rx="0" ry="0" opacity=".99" fill="#ce837e" fill-rule="evenodd"/></g></svg>
                        Sheets
@@ -523,7 +523,7 @@
 
 
            <!-- 2. ACTIVE DRAWING INFO PANEL -->
-           <div id="active-drawing-info" class="flex-shrink-0 active-drawing-info hidden light-dark3">
+           <div id="active-drawing-info" class="flex-shrink-0 px-2 active-drawing-info hidden light-dark3">
              <h2 class="active-drawing-info-h2">Active Drawing Details</h2>
              <div id="drawing-details-content" class="text-[12px] font-[DejaVu_Sans] space-y-1">
                <!-- Drawing details will be dynamically inserted here -->
@@ -583,7 +583,7 @@
                               <span class="pattern-editor-labels ">Rotate</span>
                             </button>
                             <div id="pattern-angle-options-menu"
-                                 class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-24 bg-white shadow-md rounded-lg p-1 mt-2 dark:bg-neutral-800 dark:border  dark:border-neutral-700"
+                                 class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-24 bg-white shadow-md rounded-lg p-1 mt-2 dark:bg-[#31353C] dark:border  dark:border-neutral-700"
                                  role="menu"
                                  aria-orientation="vertical">
                               <!-- Angle options will be injected here -->
@@ -675,7 +675,7 @@
               </div>
 
                   <!-- Content area for CodeMirror -->
-                  <div id="code-editor-content" class="flex-grow rounded-lg relative  overflow-x-auto">
+                  <div id="code-editor-content" class="flex-grow rounded-lg relative  overflow-x-auto scrollbar-hide">
                     <!-- The CodeMirror editor will be mounted here -->
                   </div>
                 </div>
@@ -688,7 +688,7 @@
 
         <!-- Bottom section for CSS Editor Toolbar -->
         <div id="css-editor-container" class="min-h-13  flex-shrink-0 hidden">
-          <div class="w-full   border  p-1 z-20 flex flex-wrap items-center justify-center gap-x-2 text-[12px] light-dark2">
+          <div class="w-full  border-1  p-1 z-20 flex flex-wrap items-center justify-center gap-x-2 text-[12px] light-dark2">
             
             <!-- Info Displays -->
             <p id="css-file-name" class=" textblock-2-Css-Editor-labels shrink-0  "></p>
@@ -715,8 +715,8 @@
                   <span id="fill-type-selected-text">Pattern</span>
                   <svg class="w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
-                <div id="fill-type-options-wrapper" class="shadow-md absolute hidden z-50 w-full mt-1 bg-white  border border-gray-200 rounded-lg dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#818a9c]" style="bottom: 100%; margin-bottom: 4px;">
-                  <ul id="fill-type-options" class="p-1  light-dark2  " >
+                <div id="fill-type-options-wrapper" class="shadow-md absolute hidden z-50 w-full mt-1 bg-white  border border-gray-200 rounded-lg dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#818a9c] " style="bottom: 100%; margin-bottom: 4px;">
+                  <ul id="fill-type-options" class="p-1  light-dark2 " >
                     <li data-value="pattern" class="combobox-int">Pattern</li>
                     <li data-value="color" class="combobox-int">Solid Color</li>
                   </ul>
@@ -730,7 +730,7 @@
               <!-- NEW CUSTOM PATTERN COMBOBOX -->
               <div id="fill-pattern-combobox" class="relative">
                 <input id="fill-pattern-input" class="dropdown" type="text" autocomplete="off">
-                <ul id="fill-pattern-options" class="shadow-md absolute hidden z-50 w-full max-h-48 p-1 bg-white border border-gray-200  dark:border-gray-600  dark:focus-ring-gray-600 rounded-lg overflow-y-auto dark:bg-[#3A4150]  dark:shadow-neutral-700/70  dark:text-gray-400 combobox-int outline-gray-100" style="bottom: 100%; margin-bottom: 4px;">
+                <ul id="fill-pattern-options" class="shadow-md absolute hidden z-50 w-full max-h-48 p-1 bg-white border border-gray-200  dark:border-gray-600  dark:focus-ring-gray-600 rounded-lg overflow-y-auto dark:bg-[#3A4150]  dark:shadow-neutral-700/70  dark:text-gray-400 combobox-int outline-gray-100 scrollbar-hide" style="bottom: 100%; margin-bottom: 4px;">
                   <!-- Pattern options will be dynamically inserted here -->
                 </ul>
               </div>
@@ -824,7 +824,7 @@
                 <div id="font-family-combobox" class="relative ">
                   <input id="font-family-input" class="dropdown " type="text" autocomplete="off">
                   <!-- The dropdown list will be a simple <ul> -->
-                  <ul id="font-family-options" class="shadow-md  absolute hidden z-50 w-full max-h-48 p-1 bg-white border border-gray-200 rounded-lg overflow-y-auto combobox-int dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#818a9c]" style="bottom: 100%; margin-bottom: 4px;">
+                  <ul id="font-family-options" class="shadow-md  absolute hidden z-50 w-full max-h-48 p-1 bg-white border border-gray-200 rounded-lg overflow-y-auto combobox-int dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#818a9c] scrollbar-hide" style="bottom: 100%; margin-bottom: 4px;">
                     <!-- Font options will be dynamically inserted here -->
                   </ul>
                 </div>
@@ -920,7 +920,7 @@
                 <svg class="w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </button>
               <div id="symbol-inspector-options-wrapper" class="shadow-md absolute hidden z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg " style="bottom: 100%; margin-bottom: 4px;">
-                <ul id="symbol-inspector-list" class="p-1 max-h-48 overflow-y-auto outline-transparent textblock-2-Css-Editor-labels dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#818a9c]">
+                <ul id="symbol-inspector-list" class="p-1 max-h-48 overflow-y-auto outline-transparent textblock-2-Css-Editor-labels dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#818a9c] scrollbar-hide">
                   <!-- List items will be dynamically inserted here -->
                 </ul>
               </div>
@@ -935,7 +935,7 @@
                   <li class="radio">
                     <div class="relative flex items-start w-full">
                       <div class="flex items-center h-5">
-                        <input id="space-viz-colorized" name="space-visualization-radio" type="radio" value="colorized" class="border-gray-200 rounded-full" checked>
+                        <input id="space-viz-colorized" name="space-visualization-radio" type="radio" value="colorized" class="border-gray-200 rounded-full disabled:opacity-50 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" checked>
                       </div>
                       <label for="space-viz-colorized" class="radiolabels">On</label>
                     </div>

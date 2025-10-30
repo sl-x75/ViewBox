@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "preline/variants.css";
+@import 'tailwind-scrollbar-hide/v4';
+
 
 /* Preline UI */
 @source "node_modules/preline/dist/*.js";
@@ -68,7 +70,7 @@
   
    @layer components {
     .light-dark1 {
-      @apply bg-white  border-t-1 border-gray-300  dark:bg-[#3D424C] dark:border dark:border-gray-500 dark:shadow-neutral-700/70
+      @apply bg-white  border-t-1 border-b-1 border-l-0 border-gray-300  dark:bg-[#3D424C] dark:border-l-0 dark:border-gray-500 dark:shadow-neutral-700/70
     }
   }     
 
@@ -80,13 +82,44 @@
 
      @layer components {
     .light-dark3 {
-      @apply   bg-[#CDCDCA] dark:bg-[#31353C]  dark:border-gray-500 dark:shadow-neutral-700/70
+      @apply  p-6 bg-[#CDCDCA] dark:bg-[#31353C]  dark:border-gray-500 dark:shadow-neutral-700/70
     }
   }
 
        @layer components {
     .light-dark4 {
       @apply  dark:bg-[#5c6e8d] dark:border-gray-700 dark:shadow-neutral-700/70 
+    }
+  }
+
+         @layer components {
+    .modal {
+      @apply  flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl pointer-events-auto dark:bg-[#31353C]  dark:border-neutral-700 dark:shadow-neutral-700/70 font-[DejaVu_Sans] text-[13px]  text-gray-600 dark:text-gray-400 
+    }
+  }
+
+           @layer components {
+    .modal-label {
+      @apply  dark:bg-[#31353C]  dark:border-gray-700 dark:shadow-neutral-700/70 font-[DejaVu_Sans] text-[13px]  text-gray-600  dark:text-gray-400 outline-none
+    }
+  }
+
+               @layer components {
+    .modal-label-p {
+      @apply  dark:bg-[#31353C]  dark:border-gray-700 dark:shadow-neutral-700/70  outline-none font-[DejaVu_Sans] text-[13px]  text-gray-600  dark:text-gray-400 
+    }
+  }
+
+             @layer components {
+    .modal-label-h3 {
+      @apply  dark:bg-[#31353C]  dark:border-gray-700 dark:shadow-neutral-700/70  outline-none font-[DejaVu_Sans] text-[13px]  text-gray-600  dark:text-gray-400 
+    }
+  }
+
+               @layer components {
+    .modal-input {
+      @apply  py-[6px] px-3 block w-full  rounded-md  focus:border-gray-200  focus:ring-gray-100  bg-white border-gray-200 dark:bg-[#454f65]  dark:border-gray-500 dark:shadow-neutral-700/70 dark:focus:border-gray-400
+       dark:focus:ring-gray-600 
     }
   }
 
@@ -122,7 +155,7 @@
 
 @layer components { 
   .default-rules {
-    @apply absolute bottom-0 left-[0px] right-[0px]  text-[13px] h-6 z-10 flex flex-nowrap items-center gap-x-4;
+    @apply absolute bottom-0 left-[0px] right-[0px]  text-[13px]  h-6 z-10 flex flex-nowrap items-center gap-x-4;
   }
 }
  
@@ -222,7 +255,7 @@
 
         @layer components {
     .active-drawing-info-h2 {
-      @apply text-[14px]  font-[DejaVu_Sans] mb-1.5
+      @apply text-[14px]  font-[DejaVu_Sans] text-[#3b82f6] mb-1.5
     }
   }
 
@@ -340,7 +373,7 @@
 
   @layer components {
     #file-list li.active {
-      @apply text-[#4462a3] w-[140px] rounded-lg;
+      @apply text-[#3b82f6] w-[140px] rounded-lg;
     }
   }
 
@@ -368,6 +401,21 @@
     }
   }
 
+@layer utilities {
+    .hide-scrollbar::-webkit-scrollbar {
+  scrollbar-width: none;
+  }
+}
+
+@layer utilities {
+    .hide-scrollbar {
+  scrollbar-width: none;
+  }
+}
+
+@utility no-scrollbar {
+  @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}
 
  .full .clr-field button {
   position:absolute;

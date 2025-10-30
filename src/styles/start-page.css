@@ -22,7 +22,7 @@
 
 #start-page-static-svg-container #svg-wrapper-static {
  position: fixed;
-  transform: translate(65%, -15%) scale(0.32);
+  transform: translate(68%, -14%) scale(0.32);
   transform-origin: top left;
 }
 
