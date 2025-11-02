@@ -1,7 +1,6 @@
 node_modules/
 dist/
 dist-electron/
-src/public/
 src/dist-electron/
 Helper_Project/
 preline/
