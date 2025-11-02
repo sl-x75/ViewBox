@@ -11,10 +11,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:electron": "vite build && npx electron-builder",
-    "build:mac": "vite build && npx electron-builder --mac",
-    "build:win": "vite build && npx electron-builder --win",
-    "build:linux": "vite build && npx electron-builder --linux",
+   "build:electron": "vite build && npx electron-builder --publish never",
+   "build:mac": "vite build && npx electron-builder --mac --publish never",
+   "build:win": "vite build && npx electron-builder --win --publish never",
+   "build:linux": "vite build && npx electron-builder --linux --publish never",
     "start": "electron ."
   },
   "build": {
@@ -28,15 +28,7 @@
       "dist-electron/**/*",
       "package.json"
     ],
-    "extraResources": [
-      {
-        "from": "src/public/",
-        "to": "public",
-        "filter": [
-          "**/*"
-        ]
-      }
-    ],
+    "extraResources": [],
     "asar": true,
     "asarUnpack": [
       "**/node_modules/web-ifc/**/*"

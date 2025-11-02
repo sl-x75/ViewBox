@@ -118,86 +118,60 @@ jobs:
     runs-on: ubuntu-latest
     
     permissions:
-      contents: write
+      contents: write # This is required to create the release
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
-      # Download all the built apps
-      - name: Download macOS build
+
+      - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          name: macos-build
-          path: ./release-assets/macos
+          path: ./release-assets # Download all artifacts into one parent folder
       
-      - name: Download Windows build
-        uses: actions/download-artifact@v4
-        with:
-          name: windows-build
-          path: ./release-assets/windows
-      
-      - name: Download Linux build
-        uses: actions/download-artifact@v4
-        with:
-          name: linux-build
-          path: ./release-assets/linux
-      
-      # Get version from tag
       - name: Get version from tag
         id: get_version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
       
-      # === Prepare additional assets ===
+      # === THIS IS THE FIX for your extra assets ===
       - name: Create extras archive
-        run: |
-          # Create a zip with your extra assets from the repo
-          zip -r ViewBox-extras-${{ steps.get_version.outputs.VERSION }}.zip release-assets/assets/
-      
-      # Create GitHub Release
+        # This now correctly zips the 'default-assets' folder from your repository root
+        run: zip -r ViewBox-extras.zip default-assets/
+
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        id: create_release
+        uses: ncipollo/release-action@v1
         with:
+          # This uses the outputs from the download step to find all your app files
+          artifactPath: |
+            ./release-assets/**/*.dmg
+            ./release-assets/**/*.zip
+            ./release-assets/**/*.exe
+            ./release-assets/**/*.AppImage
+            ./release-assets/**/*.deb
+            ./ViewBox-extras.zip
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.get_version.outputs.VERSION }}
           name: Release ${{ steps.get_version.outputs.VERSION }}
           draft: false
           prerelease: false
-          generate_release_notes: true
-          files: |
-            release-assets/macos/*.dmg
-            release-assets/macos/*.zip
-            release-assets/windows/*.exe
-            release-assets/windows/*.zip
-            release-assets/linux/*.AppImage
-            release-assets/linux/*.deb
-            ViewBox-extras-${{ steps.get_version.outputs.VERSION }}.zip
+          generateReleaseNotes: true
           body: |
-            ## 🎉 Release ${{ steps.get_version.outputs.VERSION }}
+            ## 📦 Downloads
             
-            ### 📦 Downloads
+            - 🍎 **macOS:** Download the `.dmg` file (Universal - Intel & Apple Silicon).
+            - 🪟 **Windows:** Download the `.exe` installer.
+            - 🐧 **Linux:** Download the `.AppImage` or `.deb` file.
             
-            **Application Installers:**
-            - 🍎 **macOS:** Download `.dmg` (Universal - Intel & Apple Silicon)
-            - 🪟 **Windows:** Download `.exe` installer
-            - 🐧 **Linux:** Download `.AppImage` or `.deb`
+            ### Template Files
+            - 📦 **ViewBox-extras.zip** - Contains `default.css`, `patterns.svg`, and `symbols.svg`.
             
-            **Additional Files:**
-            - 📦 **ViewBox-extras-${{ steps.get_version.outputs.VERSION }}.zip** - Assets bundle
-            
-            ### 📚 What's Included in Extras
-            - Patterns.svg 
-            - Symbols.svg  
-            - Default.css
+            ---
             
             ### ⚠️ Installation Notes
             
-            **macOS:** Right-click → Open on first launch  
-            **Windows:** Click "More info" → "Run anyway" if SmartScreen warning  
-            **Linux:** Make executable: `chmod +x *.AppImage`
-            
-            [Full installation instructions →](https://github.com/sl-x75/ViewBox#installation)
-            
-            ### 📋 What's Changed
-            
-            See automatically generated release notes below.
+            **macOS:** On first launch, you may need to right-click the app and select "Open".
+            **Windows:** If a SmartScreen warning appears, click "More info" → "Run anyway".
+            **Linux:** Make the AppImage executable with the command: `chmod +x ViewBox-*-linux-x64.AppImage`
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
