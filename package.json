@@ -35,8 +35,7 @@
     }
   ],
     "asar": true,
-  "asarUnpack": [], // We are now copying the file directly, so unpacking is less critical
-
+    "asarUnpack": [],
     "mac": {
       "target": [
         {
