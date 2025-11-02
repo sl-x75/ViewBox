@@ -158,7 +158,7 @@ sudo dnf install gtk3 libnotify nss libXScrnSaver libXtst xdg-utils at-spi2-atk 
 Don't trust pre-built binaries? Build it yourself!
 
 ### Prerequisites
-- Node.js 18 or higher
+- Node.js 22or higher
 - npm (comes with Node.js)
 - Git
 
