@@ -12,39 +12,33 @@ on:
 
 # Environment variables for all jobs
 env:
-  NODE_VERSION: '18'
+  NODE_VERSION: '22'  # Vite 7 requires Node 20.19+ or 22.12+
 
 jobs:
   # ============================================
   # Job 1: Build for macOS
   # ============================================
   build-macos:
-    runs-on: macos-latest  # GitHub's macOS machine
+    runs-on: macos-latest
     
     steps:
-      # 1. Download your code from GitHub
       - name: Checkout code
         uses: actions/checkout@v4
       
-      # 2. Install Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
       
-      # 3. Install dependencies
       - name: Install dependencies
-        run: npm ci  # ci = clean install (faster than npm install)
+        run: npm ci
       
-      # 4. Build for macOS
       - name: Build macOS app
         run: npm run build:mac
         env:
-          # Disable auto-update and notarization (we're not signing)
           SKIP_NOTARIZATION: true
       
-      # 5. Upload the built app to GitHub
       - name: Upload macOS artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -52,13 +46,13 @@ jobs:
           path: |
             release/*.dmg
             release/*.zip
-          retention-days: 7  # Keep for 7 days
+          retention-days: 7
 
   # ============================================
   # Job 2: Build for Windows
   # ============================================
   build-windows:
-    runs-on: windows-latest  # GitHub's Windows machine
+    runs-on: windows-latest
     
     steps:
       - name: Checkout code
@@ -89,7 +83,7 @@ jobs:
   # Job 3: Build for Linux
   # ============================================
   build-linux:
-    runs-on: ubuntu-latest  # GitHub's Linux machine
+    runs-on: ubuntu-latest
     
     steps:
       - name: Checkout code
