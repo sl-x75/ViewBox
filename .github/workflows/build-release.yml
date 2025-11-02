@@ -119,83 +119,80 @@ jobs:
   # ============================================
   # Job 4: Create GitHub Release
   # ============================================
-  create-release:
-    needs: [build-macos, build-windows, build-linux]  # Wait for all builds
-    runs-on: ubuntu-latest
+create-release:
+  needs: [build-macos, build-windows, build-linux]
+  runs-on: ubuntu-latest
+  
+  permissions:
+    contents: write
+  
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
     
-    permissions:
-      contents: write  # Allow creating releases
+    # Download all the built apps
+    - name: Download macOS build
+      uses: actions/download-artifact@v4
+      with:
+        name: macos-build
+        path: ./release-assets/macos
     
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      # Download all the built apps
-      - name: Download macOS build
-        uses: actions/download-artifact@v4
-        with:
-          name: macos-build
-          path: ./release-assets/macos
-      
-      - name: Download Windows build
-        uses: actions/download-artifact@v4
-        with:
-          name: windows-build
-          path: ./release-assets/windows
-      
-      - name: Download Linux build
-        uses: actions/download-artifact@v4
-        with:
-          name: linux-build
-          path: ./release-assets/linux
-      
-      # Get version from tag (e.g., v1.0.0 → 1.0.0)
-      - name: Get version from tag
-        id: get_version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
-      
-      # Create a GitHub Release and attach all files
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          name: Release ${{ steps.get_version.outputs.VERSION }}
-          draft: false
-          prerelease: false
-          generate_release_notes: true  # Auto-generate changelog
-          files: |
-            ./release-assets/macos/*
-            ./release-assets/windows/*
-            ./release-assets/linux/*
-          body: |
-            ## 🎉 Release ${{ steps.get_version.outputs.VERSION }}
-            
-            ### 📦 Downloads
-            
-            **macOS:**
-            - Universal binary (Intel + Apple Silicon)
-            - Download the `.dmg` file
-            - **Important:** Right-click → Open on first launch
-            
-            **Windows:**
-            - Download the `.exe` installer
-            - If SmartScreen warning: Click "More info" → "Run anyway"
-            
-            **Linux:**
-            - AppImage (universal)
-            - Debian package (.deb)
-            
-            ### ⚠️ Security Warnings
-            
-            These builds are **not code-signed** (signing costs $160-400/year).
-            
-            **This is normal for open-source GitHub projects.**
-            
-            If you're concerned:
-            - Review the source code in this repository
-            - Build from source (see README)
-            
-            ### 📋 What's Changed
-            
-            See below for automatically generated release notes.
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Download Windows build
+      uses: actions/download-artifact@v4
+      with:
+        name: windows-build
+        path: ./release-assets/windows
+    
+    - name: Download Linux build
+      uses: actions/download-artifact@v4
+      with:
+        name: linux-build
+        path: ./release-assets/linux
+    
+    # Get version
+    - name: Get version from tag
+      id: get_version
+      run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+    
+    # === NEW: Prepare additional assets ===
+    - name: Copy assets
+      run: |
+        # Copy pre-existing files from repo
+        cp -r release-assets/assets ./final-assets/
+        
+    
+    # Create GitHub Release
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: Release ${{ steps.get_version.outputs.VERSION }}
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+        files: |
+          ./release-assets/*
+
+        body: |
+          ## 🎉 Release ${{ steps.get_version.outputs.VERSION }}
+          
+          ### 📦 Downloads
+          
+          **Application Installers:**
+          - macOS: Download `.dmg` (Universal - Intel & Apple Silicon)
+          - Windows: Download `.exe` installer
+          - Linux: Download `.AppImage` or `.deb`
+          
+          **Additional Files:**
+          - 📦 **VieBox-extras.zip** -  assets
+          
+          ### 📚 What's Included in Extras
+          - Patterns.svg 
+          - Symbols.svg  
+          - Default.css
+
+          
+          [Installation instructions →](https://github.com/sl-x75/ViewBox#README_INSTALLATION.md)
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+

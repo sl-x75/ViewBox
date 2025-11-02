@@ -4,9 +4,22 @@ import fs from 'fs/promises';
 import path from 'path';
 import { IfcAPI, IFCRELDEFINESBYPROPERTIES,  IFCRELASSOCIATESDOCUMENT,  IFCMATERIAL, IFCSIUNIT,IFCPROJECT,  IFCUNITASSIGNMENT } from 'web-ifc';
 
-// This helper is now used by all functions for consistency.
 async function initializeAndLoadIfc(projectPath) {
-    const ifcFileName = `${path.basename(projectPath)}.ifc`;
+    let ifcFileName;
+    try {
+        const files = await fs.readdir(projectPath);
+        // Find the first file in the directory that ends with .ifc (case-insensitive)
+        ifcFileName = files.find(file => file.toLowerCase().endsWith('.ifc'));
+
+        if (!ifcFileName) {
+            console.error(`[IFC Parser] Error: No .ifc file found in project directory: ${projectPath}`);
+            return { ifcApi: null, modelID: -1 };
+        }
+    } catch (dirError) {
+        console.error(`[IFC Parser] Error reading project directory ${projectPath}:`, dirError);
+        return { ifcApi: null, modelID: -1 };
+    }
+    
     const ifcFilePath = path.join(projectPath, ifcFileName);
     const ifcApi = new IfcAPI();
     await ifcApi.SetWasmPath('./');
@@ -65,62 +78,69 @@ function parseIfcHeader(ifcContent) {
 // --- END: NEW, ADVANCED HEADER PARSER ---
 
 export async function getProjectCardData(projectPath) {
-  const ifcFileName = `${path.basename(projectPath)}.ifc`;
-  const ifcFilePath = path.join(projectPath, ifcFileName);
   let projectData = {
     projectName: path.basename(projectPath),
     previewImagePath: null,
     projectPath: projectPath,
   };
+  
+  let ifcFilePath;
+  try {
+      const files = await fs.readdir(projectPath);
+      const ifcFileName = files.find(file => file.toLowerCase().endsWith('.ifc'));
+      if (!ifcFileName) {
+          throw new Error(`No .ifc file found in ${projectPath}`);
+      }
+      ifcFilePath = path.join(projectPath, ifcFileName);
 
-  let ifcApi = null;
-  let modelID = -1;
+      // Now that we have the correct path, read the file for header info.
+      const ifcContent = await fs.readFile(ifcFilePath, 'utf8');
+      Object.assign(projectData, parseIfcHeader(ifcContent));
+
+  } catch (error) {
+      // This will catch both readdir errors and the "No .ifc file found" error.
+      console.error(`[IFC Parser] Error finding or reading IFC for header data in ${projectPath}:`, error);
+      // Return basic data even if we can't read the IFC header.
+      return projectData;
+  }
+
+  // We can now proceed with the more intensive parsing using the robust helper.
+  const { ifcApi, modelID } = await initializeAndLoadIfc(projectPath);
+  
+  if (modelID === -1) {
+      // initializeAndLoadIfc already logged the error, so we just return what we have.
+      return projectData;
+  }
 
   try {
-    const ifcContent = await fs.readFile(ifcFilePath, 'utf8');
-    Object.assign(projectData, parseIfcHeader(ifcContent));
+      const projectLines = await ifcApi.GetLineIDsWithType(modelID, IFCPROJECT);
+      if (projectLines.size() > 0) {
+          const project = await ifcApi.GetLine(modelID, projectLines.get(0));
+          if (project.Name?.value) projectData.projectName = project.Name.value;
+      }
 
-    const loadResult = await initializeAndLoadIfc(projectPath);
-    ifcApi = loadResult.ifcApi;
-    modelID = loadResult.modelID;
-    if (modelID === -1) return projectData;
+      const assetMap = await getDrawingToAssetMap(projectPath);
+      const typeMap = {};
+      for (const drawingName in assetMap) {
+          const rawType = assetMap[drawingName]['TargetView'];
+          const type = rawType ? (rawType.includes('PLAN') ? 'plan' : rawType.includes('ELEVATION') ? 'elevation' : rawType.includes('SECTION') ? 'section' : rawType.includes('3D') ? '3d' : 'default') : 'default';
+          typeMap[drawingName] = type;
+      }
 
-    const projectLines = await ifcApi.GetLineIDsWithType(modelID, IFCPROJECT);
-    if (projectLines.size() > 0) {
-      const project = await ifcApi.GetLine(modelID, projectLines.get(0));
-      if (project.Name?.value) projectData.projectName = project.Name.value;
-    }
-
-    const assetMap = await getDrawingToAssetMap(projectPath);
-    const typeMap = {};
-    for (const drawingName in assetMap) {
-        const rawType = assetMap[drawingName]['TargetView'];
-        if (rawType) {
-            if (rawType.includes('PLAN')) typeMap[drawingName] = 'plan';
-            else if (rawType.includes('ELEVATION')) typeMap[drawingName] = 'elevation';
-            else if (rawType.includes('SECTION')) typeMap[drawingName] = 'section';
-            else if (rawType.includes('3D')) typeMap[drawingName] = '3d';
-            else typeMap[drawingName] = 'default';
-        } else {
-            typeMap[drawingName] = 'default';
-        }
-    }
-    const drawings = Object.keys(typeMap);
-    const sectionDrawing = drawings.find(d => typeMap[d] === 'section');
-    const planDrawing = drawings.find(d => typeMap[d] === 'plan');
-    const previewDrawingName = sectionDrawing || planDrawing;
-    if (previewDrawingName) {
-      projectData.previewImagePath = path.join(projectPath, 'drawings', previewDrawingName);
-    }
-    return projectData;
-  } catch (error) {
-    console.error(`[IFC Parser] Critical error in getProjectCardData for ${projectPath}:`, error);
-    return projectData;
+      const drawings = Object.keys(typeMap);
+      const previewDrawingName = drawings.find(d => typeMap[d] === 'section') || drawings.find(d => typeMap[d] === 'plan');
+      if (previewDrawingName) {
+          projectData.previewImagePath = path.join(projectPath, 'drawings', previewDrawingName);
+      }
+  } catch (parseError) {
+      console.error(`[IFC Parser] Critical error during web-ifc parsing in getProjectCardData for ${projectPath}:`, parseError);
   } finally {
-    if (ifcApi && modelID !== -1) {
-      ifcApi.CloseModel(modelID);
-    }
+      if (ifcApi && modelID !== -1) {
+          ifcApi.CloseModel(modelID);
+      }
   }
+
+  return projectData;
 }
 
 export async function getDrawingToAssetMap(projectPath) {

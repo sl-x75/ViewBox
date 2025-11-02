@@ -1,0 +1,98 @@
+/*
+ * Bonsai - OpenBIM Blender Add-on
+ * Copyright (C) 2020, 2021 Dion Moult <dion@thinkmoult.com>
+ *
+ * This file is part of Bonsai.
+ *
+ * Bonsai is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Bonsai is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY, without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * long with Bonsai.  If not, see <http://www.gnu.org/licenses/>.
+ */
+* { stroke-linecap: round; stroke-linejoin: square; }
+text, tspan { /* 2.5mm */ fill: black; stroke: none; font-family: 'OpenGost Type B TT', 'DejaVu Sans Condensed', 'Ubuntu', 'Saira SemiCondensed', 'Saira Condensed', 'Artifakt Element', 'Liberation Sans', 'Arial Narrow','Open Sans', 'Arial', 'Times'; font-size: 4.13px; }
+.cut { fill: #000000ff; stroke: black; stroke-width: 0; }
+.projection { fill: white; stroke: black; stroke-width: 0; }
+.surface { fill: #ffffff; stroke: black; stroke-width: 0.05;  }
+.annotation { fill: none; stroke: black; stroke-linecap: round; stroke-width: 0.25; }
+.IfcAnnotation { fill: none; stroke: black; stroke-width: 0.2; }
+.IfcGeographicElement { fill: none; stroke: black; stroke-linecap: round; stroke-width: 1;  stroke-dasharray: 12.5, 3, 3, 3; }
+.IfcSpace { fill: #a8c7c24c; stroke: none; }
+/*
+  --- GENERIC DEFAULT TEXT TSPAN STYLES --- 
+ */
+text.title, tspan.title { /* 7mm */ font-size: 11.55px; }
+text.header, tspan.header { /* 5mm */ font-size: 8.25px; }
+text.large, tspan.large { /* 3.5mm */ font-size: 5.78px; }
+text.regular, tspan.regular { /* 2.5mm */ font-size: 4.13px; }
+text.small, tspan.small { /* 1.8mm */ font-size: 2.97px; }
+/*
+  --- TEXT TSPAN STYLES --- 
+ */
+/*
+  --- PREDEFINED TYPES - TEXT STYLES --- 
+ */
+.PredefinedType-TEXT { fill: #000000; font-size: 4.13 ; font-family: 'OpenGost Type B TT'; stroke: none; }
+/*
+  --- PREDEFINED TYPES - LINEWORK STYLES --- 
+ */
+.PredefinedType-LINEWORK { stroke: black; stroke-width: 0.25; stroke-dasharray: 0; }
+/*
+  --- PREDEFINED TYPES - ANNOTATIONS STYLES --- 
+ */
+.PredefinedType-GRID { stroke: #d56062; stroke-width: 0.55; stroke-dasharray: 12.5, 3, 0.5, 3; marker-start: url(#grid-marker); marker-end: url(#grid-marker) }
+.PredefinedType-SECTIONLEVEL { stroke: #552e41; stroke-width: 0.20; marker-start: url(#section-level-marker); stroke-dasharray: 12.5, 3, 3, 3; }
+.PredefinedType-PLANLEVEL { stroke: #2e2e55; stroke-width: 0.20; marker-end: url(#plan-level-marker); }
+.PredefinedType-DIMENSION { stroke: #6062d5; stroke-width: 0.2; marker-start: url(#dimension-marker-start); marker-end: url(#dimension-marker-end); }
+.PredefinedType-ANGLE { stroke: #60d693; stroke-width: 0.22; marker-start: url(#angle-marker-start); marker-end: url(#angle-marker-end); }
+.PredefinedType-RADIUS { stroke: #60d2d6; stroke-width: 0.20; marker-end: url(#radius-marker-end); }
+.PredefinedType-FALL { stroke: #60d2d6; stroke-width: 0.20; marker-end: url(#fall-marker-end); }
+.PredefinedType-SLOPEANGLE { marker-end: url(#angle-marker-end); }
+.PredefinedType-SLOPEPERCENT { marker-end: url(#radius-marker-end); }
+.PredefinedType-SLOPEFRACTION { marker-end: url(#radius-marker-end); }
+.PredefinedType-DIAMETER { stroke: #6062d5; stroke-width: 0.20; marker-start: url(#diameter-marker-start); marker-end: url(#diameter-marker-end); }
+.PredefinedType-STAIRARROW { stroke: #d5609e; stroke-width: 0.20; marker-start: url(#stair-marker-start); marker-end: url(#stair-marker-end); }
+path.PredefinedType-TEXTLEADER { stroke: #c349cc; stroke-width: 0.20; marker-end: url(#leader-marker); stroke-linejoin: square; stroke-linejoin: round;  }
+.PredefinedType-BREAKLINE { fill: none; stroke: #70330d; stroke-width: 0.20; marker-mid: url(#breakline-marker); stroke-linecap:round; }
+.PredefinedType-SECTION { stroke: #6095d5; stroke-width: 0.55; stroke-dasharray: 12.5, 3, 0.5, 3;; stroke-linejoin: square; }
+.PredefinedType-BOUNDARY { fill: none; stroke: red; stroke-width: 1; stroke-dasharray: 12, 4, 3, 4, 3, 4; }
+.PredefinedType-SEALANT { fill: url(#crosshatch1); stroke-width: 0.20; }
+.PredefinedType-FILLAREA { fill: url(#demolish); stroke: black; stroke-width: 0.2;}
+.PredefinedType-IMAGE { fill: #ffffff14; stroke: #000000; stroke-width: 0.2; }
+/*
+  --- PREDEFINED TYPES - MATERIALS STYLES --- 
+ */
+.PredefinedType-STUD { stroke: black; stroke-width: 1; }
+.PredefinedType-WOOD { fill: url(#wood); stroke: black; stroke-width: 0.5;  stroke-dasharray: 0; }
+.PredefinedType-STEEL { fill: url(#steel); stroke: black; stroke-width: 0.5;  stroke-dasharray: 0; }
+.PredefinedType-CONCRETE { fill: url(#concrete); stroke: black; stroke-width: 0.5;  stroke-dasharray: 0; }
+.PredefinedType-PLASTERBOARD { fill: url(#sand); stroke: black; stroke-width: 0.25;  stroke-dasharray: 0; }
+/*
+  --- MATERIAL & LAYER & SURFACE MATERIAL STYLES --- 
+ */
+/*
+  ---PATTERN STYLES--- 
+ */
+/*
+  --- MARKERS STYLES --- 
+ */
+/*
+  --- SYMBOL STYLES --- 
+ */
+/*
+  --- IFCSPACE STYLES --- 
+ */
+/*
+  --- EPSet STYLES --- 
+ */
+.EPsetStatusStatus-DEMOLISH { fill: url(#demolish);  stroke: #fe585899;  stroke-width: 0.25; stroke-dasharray: 3, 1; }
+.EPsetStatusStatus-NEW { fill: url(#new) ;  stroke: #4B68DD; stroke-width: 0.25; stroke-dasharray: 3, 1; }
+.EPsetStatusStatus-EXISTING { fill: url(#existing);  stroke: black; stroke-width: 0.25;   stroke-dasharray: 3, 1; }

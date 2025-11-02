@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
       '#f4a261',
       '#e76f51',
       '#d56062',
+      '#FF00FF'
     ]
   });
 
@@ -312,7 +313,22 @@ case 'font-size':
         allControls.fillSwitcher.style.display = 'flex';
         allControls.strokeColorControlGroup.style.display = 'block';
         allControls.strokeWidthControlGroup.style.display = 'block';
+
+        if (rule.selector && rule.selector.includes('.surface')) {
+          allControls.strokeDasharrayControlGroup.style.display = 'block';
+        }
       }
+
+     // THIS IS THE FIX:
+     // After populating from a fallback, check if we are in "create new rule" mode.
+     // If the new rule is for a surface, ensure the dasharray control is visible
+     // regardless of what the fallback rule contained.
+     const newRuleSelector = getNewRuleSelectorFromState();
+     if (newRuleSelector && newRuleSelector.includes('.surface')) {
+       allControls.strokeDasharrayControlGroup.style.display = 'block';
+       allControls.strokeDasharray.value = '';
+     }
+
 
       const finalFillType = allControls.fillType.value;
       updateFillControlVisibility();
