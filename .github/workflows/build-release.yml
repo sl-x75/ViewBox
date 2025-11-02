@@ -119,80 +119,91 @@ jobs:
   # ============================================
   # Job 4: Create GitHub Release
   # ============================================
-create-release:
-  needs: [build-macos, build-windows, build-linux]
-  runs-on: ubuntu-latest
-  
-  permissions:
-    contents: write
-  
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+  create-release:
+    needs: [build-macos, build-windows, build-linux]
+    runs-on: ubuntu-latest
     
-    # Download all the built apps
-    - name: Download macOS build
-      uses: actions/download-artifact@v4
-      with:
-        name: macos-build
-        path: ./release-assets/macos
+    permissions:
+      contents: write
     
-    - name: Download Windows build
-      uses: actions/download-artifact@v4
-      with:
-        name: windows-build
-        path: ./release-assets/windows
-    
-    - name: Download Linux build
-      uses: actions/download-artifact@v4
-      with:
-        name: linux-build
-        path: ./release-assets/linux
-    
-    # Get version
-    - name: Get version from tag
-      id: get_version
-      run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
-    
-    # === NEW: Prepare additional assets ===
-    - name: Copy assets
-      run: |
-        # Copy pre-existing files from repo
-        cp -r release-assets/assets ./final-assets/
-        
-    
-    # Create GitHub Release
-    - name: Create GitHub Release
-      uses: softprops/action-gh-release@v1
-      with:
-        name: Release ${{ steps.get_version.outputs.VERSION }}
-        draft: false
-        prerelease: false
-        generate_release_notes: true
-        files: |
-          ./release-assets/*
-
-        body: |
-          ## 🎉 Release ${{ steps.get_version.outputs.VERSION }}
-          
-          ### 📦 Downloads
-          
-          **Application Installers:**
-          - macOS: Download `.dmg` (Universal - Intel & Apple Silicon)
-          - Windows: Download `.exe` installer
-          - Linux: Download `.AppImage` or `.deb`
-          
-          **Additional Files:**
-          - 📦 **VieBox-extras.zip** -  assets
-          
-          ### 📚 What's Included in Extras
-          - Patterns.svg 
-          - Symbols.svg  
-          - Default.css
-
-          
-          [Installation instructions →](https://github.com/sl-x75/ViewBox#README_INSTALLATION.md)
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      # Download all the built apps
+      - name: Download macOS build
+        uses: actions/download-artifact@v4
+        with:
+          name: macos-build
+          path: ./release-assets/macos
+      
+      - name: Download Windows build
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-build
+          path: ./release-assets/windows
+      
+      - name: Download Linux build
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-build
+          path: ./release-assets/linux
+      
+      # Get version from tag
+      - name: Get version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+      
+      # === Prepare additional assets ===
+      - name: Create extras archive
+        run: |
+          # Create a zip with your extra assets from the repo
+          zip -r ViewBox-extras-${{ steps.get_version.outputs.VERSION }}.zip release-assets/assets/
+      
+      # Create GitHub Release
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Release ${{ steps.get_version.outputs.VERSION }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: |
+            release-assets/macos/*.dmg
+            release-assets/macos/*.zip
+            release-assets/windows/*.exe
+            release-assets/windows/*.zip
+            release-assets/linux/*.AppImage
+            release-assets/linux/*.deb
+            ViewBox-extras-${{ steps.get_version.outputs.VERSION }}.zip
+          body: |
+            ## 🎉 Release ${{ steps.get_version.outputs.VERSION }}
+            
+            ### 📦 Downloads
+            
+            **Application Installers:**
+            - 🍎 **macOS:** Download `.dmg` (Universal - Intel & Apple Silicon)
+            - 🪟 **Windows:** Download `.exe` installer
+            - 🐧 **Linux:** Download `.AppImage` or `.deb`
+            
+            **Additional Files:**
+            - 📦 **ViewBox-extras-${{ steps.get_version.outputs.VERSION }}.zip** - Assets bundle
+            
+            ### 📚 What's Included in Extras
+            - Patterns.svg 
+            - Symbols.svg  
+            - Default.css
+            
+            ### ⚠️ Installation Notes
+            
+            **macOS:** Right-click → Open on first launch  
+            **Windows:** Click "More info" → "Run anyway" if SmartScreen warning  
+            **Linux:** Make executable: `chmod +x *.AppImage`
+            
+            [Full installation instructions →](https://github.com/sl-x75/ViewBox#installation)
+            
+            ### 📋 What's Changed
+            
+            See automatically generated release notes below.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
