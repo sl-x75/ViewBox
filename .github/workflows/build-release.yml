@@ -118,37 +118,40 @@ jobs:
     runs-on: ubuntu-latest
     
     permissions:
-      contents: write # This is required to create the release
+      contents: write
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download all artifacts
+      - name: Download all build artifacts
         uses: actions/download-artifact@v4
         with:
-          path: ./release-assets # Download all artifacts into one parent folder
-      
+          path: ./release-assets # All artifacts will be in subdirectories here
+
       - name: Get version from tag
         id: get_version
         run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
       
-      # === THIS IS THE FIX for your extra assets ===
       - name: Create extras archive
-        # This now correctly zips the 'default-assets' folder from your repository root
         run: zip -r ViewBox-extras.zip default-assets/
+      
+      - name: List files for release
+        # This is a useful debugging step to see exactly what will be uploaded
+        run: |
+          ls -R ./release-assets
+          ls ./ViewBox-extras.zip
 
       - name: Create GitHub Release
         id: create_release
         uses: ncipollo/release-action@v1
         with:
-          # This uses the outputs from the download step to find all your app files
-          artifacts:
-            ./release-assets/**/*.dmg
-            ./release-assets/**/*.zip
-            ./release-assets/**/*.exe
-            ./release-assets/**/*.AppImage
-            ./release-assets/**/*.deb
+          # THIS IS THE FIX: Provide the paths to the directories containing the assets.
+          # The action will automatically upload all files from these paths.
+          artifact: |
+            ./release-assets/macos-build/*
+            ./release-assets/windows-build/*
+            ./release-assets/linux-build/*
             ./ViewBox-extras.zip
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.get_version.outputs.VERSION }}
@@ -172,6 +175,7 @@ jobs:
             
             **macOS:** On first launch, you may need to right-click the app and select "Open".
             **Windows:** If a SmartScreen warning appears, click "More info" → "Run anyway".
-            **Linux:** Make the AppImage executable with the command: `chmod +x ViewBox-*-linux-x64.AppImage`
+            **Linux:** Make the AppImage executable with the command: `chmod +x *.AppImage`
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

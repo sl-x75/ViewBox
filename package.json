@@ -28,11 +28,15 @@
       "dist-electron/**/*",
       "package.json"
     ],
-    "extraResources": [],
+  "extraResources": [
+    {
+      "from": "node_modules/web-ifc/web-ifc.wasm",
+      "to": "web-ifc.wasm"
+    }
+  ],
     "asar": true,
-    "asarUnpack": [
-      "**/node_modules/web-ifc/**/*"
-    ],
+  "asarUnpack": [], // We are now copying the file directly, so unpacking is less critical
+
     "mac": {
       "target": [
         {
