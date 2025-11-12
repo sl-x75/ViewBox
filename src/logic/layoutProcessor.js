@@ -44,6 +44,23 @@ export async function processLayoutFile(svgElement, layoutFilePath) {
         continue;
       }
 
+      // --- THIS IS THE FIX: Resolve underlay paths WITHIN the inlined SVG ---
+     const linkedSvgDir = path.dirname(linkedSvgPath);
+     const underlayImages = linkedSvgRoot.querySelectorAll('image');
+     underlayImages.forEach(underlay => {
+       const underlayHref = underlay.getAttribute('xlink:href') || underlay.getAttribute('href');
+       // Only process non-SVG, relative image paths
+       if (underlayHref && !underlayHref.toLowerCase().endsWith('.svg') && !underlayHref.startsWith('data:') && !underlayHref.startsWith('http')) {
+         const absoluteImagePath = path.resolve(linkedSvgDir, underlayHref);
+         const newHref = `bonsai-file://${absoluteImagePath}`;
+         underlay.setAttribute('xlink:href', newHref);
+         underlay.setAttribute('href', newHref);
+         console.log(`[Layout Underlay] Resolved image path: ${underlayHref} -> ${newHref}`);
+       }
+     });
+     // --- END OF FIX ---
+     
+
       // This scopes all IDs (like 'brickface') and returns a map of oldId -> newId
       const idMap = scopeIdsAndReferences(linkedSvgRoot, uniqueSuffix);
 

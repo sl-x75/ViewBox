@@ -126,6 +126,9 @@
 <pattern id="brickface" width="30" height="30" patternTransform="scale(0.2)" patternUnits="userSpaceOnUse">
     <path  d="M0 22.5h30v15H0zm15-15h30v15H15m-30-15h30v15h-30zm15-15h30v15H0z"/>
 </pattern>
+<pattern id="parquet" width="120" height="30" patternTransform="scale(0.2)" patternUnits="userSpaceOnUse">
+    <path d="M0 22.5h120v15H0zm60-15h120v15H60m-120-15h120v15h-120zm60-15h120v15H0z"/>
+</pattern>
 <pattern id="earth" width="6" height="6" patternUnits="userSpaceOnUse">
     <rect width="100%" height="100%"/>
     <line x1="0" y1="0" x2="0" y2="2" />

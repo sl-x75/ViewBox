@@ -356,14 +356,45 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log('[Renderer] File lists refreshed with new asset data.');
   });
 
-  // 3. Listen for the current file being changed on disk
-  ipcRenderer.on('current-file-updated', async (event, { changedFilePath }) => {
-    const currentSvg = getCurrentSvgElement();
-    if (currentSvg && currentSvg.dataset.filePath === changedFilePath) {
-      console.log(`[Renderer] Current file (${path.basename(changedFilePath)}) was modified externally. Reloading...`);
-      await loadSvgFile(changedFilePath);
+// 3. Listen for underlay image updates (with cache-busting)
+ipcRenderer.on('underlay-image-updated', (event, { imagePath }) => {
+  const currentSvg = getCurrentSvgElement();
+  if (!currentSvg) return;
+  
+  const changedFileName = path.basename(imagePath);
+  console.log(`[Renderer] Underlay image (${changedFileName}) was modified. Reloading with cache-bust...`);
+  
+  // Find all image elements that reference this file
+  const images = currentSvg.querySelectorAll('image');
+  let updated = false;
+  
+  images.forEach(img => {
+    const href = img.getAttribute('xlink:href') || img.getAttribute('href');
+    // Match by filename (the href might have query params already)
+    if (href && href.includes(changedFileName)) {
+      // Strip any existing query params and add new timestamp
+      const baseUrl = href.split('?')[0];
+      const cacheBustUrl = `${baseUrl}?t=${Date.now()}`;
+      img.setAttribute('xlink:href', cacheBustUrl);
+      img.setAttribute('href', cacheBustUrl);
+      updated = true;
+      console.log(`[Renderer] ✓ Cache-busted: ${changedFileName}`);
     }
   });
+  
+  if (!updated) {
+    console.log(`[Renderer] ⚠ No matching image element found for ${changedFileName}`);
+  }
+});
+
+// 4. Listen for the current SVG/CSS file being changed
+ipcRenderer.on('current-file-updated', async (event, { changedFilePath }) => {
+  const currentSvg = getCurrentSvgElement();
+  if (currentSvg && currentSvg.dataset.filePath === changedFilePath) {
+    console.log(`[Renderer] Current file (${path.basename(changedFilePath)}) was modified externally. Reloading...`);
+    await loadSvgFile(changedFilePath);
+  }
+});
 
   // --- END: NEW IPC LISTENERS ---
 });

@@ -1,6 +1,6 @@
 // main.js
 
-import { app, BrowserWindow, session, ipcMain, shell, protocol, dialog, Menu } from 'electron';
+import { app, BrowserWindow, session, ipcMain, shell, protocol, dialog, Menu, nativeTheme } from 'electron';
 import path from 'path';
 import fs from "fs/promises";
 import mime from 'mime';
@@ -33,7 +33,7 @@ let projectWatcher = null;
 const isDev = process.env.VITE_DEV_SERVER_URL !== undefined;
 const VITE_DEV_SERVER_URL = process.env.VITE_DEV_SERVER_URL;
 
-// --- RECENT PROJECTS LOGIC ---
+// --- RECENT PROJECTS & SETTINGS LOGIC ---
 const userDataPath = app.getPath('userData');
 const recentProjectsPath = path.join(userDataPath, 'recent-projects.json');
 const settingsPath = path.join(userDataPath, 'settings.json');
@@ -68,10 +68,10 @@ async function writeRecentProjects(projects) {
 
 async function addProjectToRecent(projectPath) {
   if (!projectPath) return;
- const userSettings = await readUserSettings();
- const recentProjectsCount = userSettings?.startPage?.recentProjectsCount || 10; // Default to 10
- const newProjectObject = { projectPath, projectName: path.basename(projectPath) };
- let projects = await readRecentProjects();
+  const userSettings = await readUserSettings();
+  const recentProjectsCount = userSettings?.startPage?.recentProjectsCount || 10; // Default to 10
+  const newProjectObject = { projectPath, projectName: path.basename(projectPath) };
+  let projects = await readRecentProjects();
   projects = projects.filter(p => p.projectPath !== projectPath);
   projects.unshift(newProjectObject);
   await writeRecentProjects(projects.slice(0, recentProjectsCount));
@@ -119,40 +119,42 @@ function registerIpcHandlers() {
   });
 
   // Settings Handlers
- ipcMain.handle('get-user-settings', async () => {
-   return readUserSettings();
- });
+  ipcMain.handle('get-user-settings', async () => {
+    return readUserSettings();
+  });
   ipcMain.handle('save-user-settings', async (event, settings) => {
     await fs.writeFile(settingsPath, JSON.stringify(settings, null, 2));
   });
 
   // File Watcher
-  ipcMain.on('set-project-to-watch', (event, projectPath) => {
-    const win = BrowserWindow.fromWebContents(event.sender);
-    if (projectWatcher) projectWatcher.close();
-    if (!projectPath || !win) return;
+ // --- THIS IS THE FINAL, CORRECTED VERSION ---
+ ipcMain.on('set-project-to-watch', (event, projectPath) => {
+   const win = BrowserWindow.fromWebContents(event.sender);
+   if (projectWatcher) projectWatcher.close();
+   if (!projectPath || !win) return;
 
-    const ifcFileName = `${path.basename(projectPath)}.ifc`;
-    const pathsToWatch = [
-      path.join(projectPath, 'drawings'),
-      path.join(projectPath, 'layouts'),
-      path.join(projectPath, 'sheets'),
-      path.join(projectPath, ifcFileName)
-    ];
+   // 1. Revert to the original, reliable method of watching directories.
+   const ifcFileName = `${path.basename(projectPath)}.ifc`;
+   const pathsToWatch = [
+     path.join(projectPath, 'drawings'),
+     path.join(projectPath, 'layouts'),
+     path.join(projectPath, 'sheets'),
+     path.join(projectPath, ifcFileName)
+   ];
 
-    projectWatcher = chokidar.watch(pathsToWatch, {
-      ignored: /(^|[\/\\])\../,
-      persistent: true,
-      ignoreInitial: true,
-      depth: 1,
-      awaitWriteFinish: { stabilityThreshold: 250, pollInterval: 100 }
-    });
+   projectWatcher = chokidar.watch(pathsToWatch, {
+     ignored: /(^|[\/\\])\../,
+     persistent: true,
+     ignoreInitial: true,
+     // depth: 1, // Let chokidar handle depth automatically for robustness
+     awaitWriteFinish: { stabilityThreshold: 500, pollInterval: 100 }
+   });
 
-    const notify = (channel, payload) => {
-      if (!win.isDestroyed()) win.webContents.send(channel, payload);
-    };
+   const notify = (channel, payload) => {
+     if (!win.isDestroyed()) win.webContents.send(channel, payload);
+   };
 
-    projectWatcher
+   projectWatcher
      .on('add', () => {
        addProjectToRecent(projectPath);
        notify('project-files-updated', { projectPath });
@@ -161,16 +163,22 @@ function registerIpcHandlers() {
        addProjectToRecent(projectPath);
        notify('project-files-updated', { projectPath });
      })
-      .on('change', (filePath) => {
-       // This is the most important part: re-sort the recent projects list on ANY file change.
-       addProjectToRecent(projectPath);
-        if (path.basename(filePath) === ifcFileName) {
-          notify('ifc-file-updated', { projectPath });
-        } else {
-          notify('current-file-updated', { changedFilePath: filePath });
-        }
-      });
-  });
+     .on('change', (filePath) => {
+     addProjectToRecent(projectPath);
+     
+     const fileExtension = path.extname(filePath).toLowerCase();
+     
+     if (fileExtension === '.ifc') {
+       notify('ifc-file-updated', { projectPath });
+     } else if (['.png', '.jpg', '.jpeg', '.gif', '.bmp'].includes(fileExtension)) {
+       // Send a specific event for image updates with the full path
+       notify('underlay-image-updated', { imagePath: filePath });
+     } else {
+       // For .svg and .css changes, send the specific path
+       notify('current-file-updated', { changedFilePath: filePath });
+     }
+   })   ;
+ });
 }
 
 // --- APPLICATION MENU ---
@@ -233,8 +241,27 @@ function createMenu() {
 }
 
 // --- CREATE WINDOW ---
-function createWindow() {
+async function createWindow() {
+  // Define your background colors
+  const LIGHT_BG = '#f9fafb';
+  const DARK_BG = '#31353C';
+
+  // Read settings to determine the correct background color
+  const userSettings = await readUserSettings();
+  const themeMode = userSettings?.theme?.mode || 'system';
+  
+  let finalBackgroundColor = LIGHT_BG;
+  if (themeMode === 'dark') {
+    finalBackgroundColor = DARK_BG;
+  } else if (themeMode === 'system') {
+    if (nativeTheme.shouldUseDarkColors) {
+      finalBackgroundColor = DARK_BG;
+    }
+  }
+
   const mainWindow = new BrowserWindow({
+    show: false,
+    backgroundColor: finalBackgroundColor,
     frame: false,
     titleBarStyle: "hiddenInset",
     width: 1200,
@@ -272,18 +299,25 @@ function createWindow() {
   } else {
     mainWindow.loadURL('bonsai-file://dist/index.html');
   }
+
+  // Only show the window when the content is ready.
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show();
+  });
 }
 
 // --- APP LIFECYCLE ---
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   // Register handlers and menu
   registerIpcHandlers();
   createMenu();
 
   // Register custom protocol handler
-  protocol.handle('bonsai-file', async (request) => {
-    const url = new URL(request.url);
-    let decodedPath = decodeURI(url.pathname);
+protocol.handle('bonsai-file', async (request) => {
+  const url = new URL(request.url);
+  
+  // Strip query params before resolving path
+  let decodedPath = decodeURI(url.pathname);
 
     // Combine host + pathname if host exists
     if (url.host && !decodedPath.startsWith(`/${url.host}`)) {
@@ -309,21 +343,16 @@ app.whenReady().then(() => {
       // App-internal file: resolve relative to app root
       if (decodedPath.startsWith('/')) decodedPath = decodedPath.slice(1);
       
-      // In production, files are in the asar or app.asar.unpacked
       if (app.isPackaged) {
-        // Try to load from the resources path first (for extraResources)
         const resourcesPath = process.resourcesPath;
         filePath = path.join(resourcesPath, decodedPath);
         
-        // Check if it's a bundled app file
         try {
           await fs.access(filePath);
         } catch {
-          // Try app path (inside asar)
           filePath = path.join(__dirname, '..', decodedPath);
         }
       } else {
-        // Development: relative to project root
         filePath = path.join(__dirname, '..', decodedPath);
       }
     }
@@ -335,20 +364,29 @@ app.whenReady().then(() => {
       isPackaged: app.isPackaged 
     });
 
-    try {
-      const data = await fs.readFile(filePath);
-      const type = mime.getType(filePath) || 'text/plain';
-      return new Response(data, { headers: { 'Content-Type': type } });
-    } catch (err) {
+     try {
+       const data = await fs.readFile(filePath);
+       const type = mime.getType(filePath) || 'text/plain';
+       
+       // Add no-cache headers for image files
+       const headers = { 'Content-Type': type };
+       if (['.png', '.jpg', '.jpeg', '.gif', '.bmp'].includes(path.extname(filePath).toLowerCase())) {
+         headers['Cache-Control'] = 'no-cache, no-store, must-revalidate';
+         headers['Pragma'] = 'no-cache';
+         headers['Expires'] = '0';
+       }
+       
+       return new Response(data, { headers });
+     } catch (err) {
       console.error('[bonsai-file] failed to load', filePath, err);
       return new Response('File not found', { status: 404 });
     }
   });
 
-  createWindow();
+  await createWindow();
 
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  app.on("activate", async () => {
+    if (BrowserWindow.getAllWindows().length === 0) await createWindow();
   });
 });
 

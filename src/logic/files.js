@@ -175,7 +175,7 @@ export async function populateFileList(projectPath, folderName, listContainer) {
 
         const accordionHTML = `
           <div class="hs-accordion">
-            <button class="hs-accordion-toggle hs-accordion-active:text-[#3b82f6] dark:text-gray-400 accordion-D-L-S-G">
+            <button class="hs-accordion-toggle hs-accordion-active:text-[#60a5fa] dark:text-gray-400 accordion-D-L-S-G">
               ${closedIconHTML}
               ${openIconHTML}
               ${formatName(groupName)}

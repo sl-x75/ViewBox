@@ -255,7 +255,7 @@
 
         @layer components {
     .active-drawing-info-h2 {
-      @apply text-[14px]  font-[DejaVu_Sans] text-[#3b82f6] mb-1.5
+      @apply text-[14px]  font-[DejaVu_Sans] text-[#60a5fa] mb-1.5
     }
   }
 
@@ -373,7 +373,7 @@
 
   @layer components {
     #file-list li.active {
-      @apply text-[#3b82f6] w-[140px] rounded-lg;
+      @apply text-[#60a5fa] w-[140px] rounded-lg;
     }
   }
 

@@ -130,6 +130,28 @@ export async function loadSvgFile(filePath) {
       throw new Error('No SVG element found in the loaded file.');
     }
 
+   const images = svgElement.querySelectorAll('image');
+
+       // --- THIS IS THE FIX: Resolve underlay image paths ---
+   const svgDir = path.dirname(filePath);
+   images.forEach(image => {
+     const href = image.getAttribute('xlink:href') || image.getAttribute('href');
+     // Check if it's a relative path and not a data URI
+     // THIS IS THE FIX: Only process non-SVG, relative image paths.
+     // Leave SVG images for the layout processor.
+     if (href && !href.toLowerCase().endsWith('.svg') && !href.startsWith('data:') && !href.startsWith('http')) {
+        const absoluteImagePath = path.resolve(svgDir, href);
+        const newHref = `bonsai-file://${absoluteImagePath}`;
+       
+       // Set both attributes for maximum compatibility
+       image.setAttribute('xlink:href', newHref);
+       image.setAttribute('href', newHref);
+       
+       console.log(`[Underlay] Resolved image path: ${href} -> ${newHref}`);
+     }
+   });
+   // --- END OF FIX ---
+
     const isLayout = filePath.includes('/layouts/') || filePath.includes('\\layouts');
     const originalViewBox = svgElement.getAttribute('viewBox');
 
@@ -239,7 +261,7 @@ export async function loadSvgFile(filePath) {
           } else if ((key === 'Stylesheet' || key === 'Markers' || key === 'Symbols' || key === 'Patterns' || key === 'ShadingStyles') && typeof value === 'string') {
             const fullPath = path.join(projectPath, value);
             const displayValue = `./${path.basename(value)}`;
-            finalHTML = `<span class="font">${key}:</span> <span class="clickable-file-path text-[#3b82f6] cursor-pointer hover:underline" data-full-file-path="${fullPath}">${displayValue}</span>`;
+            finalHTML = `<span class="font">${key}:</span> <span class="clickable-file-path text-[#60a5fa] cursor-pointer hover:underline" data-full-file-path="${fullPath}">${displayValue}</span>`;
           } else {
             finalHTML = `<span class=" font-[Saira]  text-[13px] text-gray-500">${key}:</span> ${value}`;
           }
@@ -319,8 +341,11 @@ export async function loadSvgFile(filePath) {
     }
     // --- END: REPLACEMENT LOGIC BLOCK ---
 
-    const images = svgElement.querySelectorAll('image');
-    const svgImages = Array.from(images).filter(img => img.href.baseVal.toLowerCase().endsWith('.svg'));
+  // --- THIS IS THE FIX (Part 2): Use the existing 'images' variable.
+  const svgImages = Array.from(images).filter(img => {
+    const href = img.getAttribute('xlink:href') || img.getAttribute('href');
+    return href && href.toLowerCase().endsWith('.svg');
+  });
     if (isManipulating() && svgImages.length > 0) {
       console.log('🔄 Processing layout file in manipulation mode...');
       await processLayoutFile(svgElement, filePath);
