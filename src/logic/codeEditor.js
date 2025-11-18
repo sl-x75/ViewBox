@@ -12,7 +12,7 @@ import { json } from '@codemirror/lang-json';
 import { markdown } from '@codemirror/lang-markdown';
 import { xml } from '@codemirror/lang-xml';
 import { color } from '@uiw/codemirror-extensions-color';
-import { materialLight, nord } from '@uiw/codemirror-themes-all';
+import { githubDark, materialDark, materialLight, nord, tokyoNight, xcodeDark } from '@uiw/codemirror-themes-all';
 import { readFileContent, writeFileContent } from '../utils/fileOperations.js';
 import { loadSvgFile } from './svgLoader.js';
 import { 
@@ -128,7 +128,7 @@ export function initializeCodeEditor(container, initialContent = '', filePath = 
     const languageExtension = getLanguageExtension(filePath);
 
     const isDarkMode = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-    const initialTheme = isDarkMode ? nord : materialLight;
+    const initialTheme = isDarkMode ? xcodeDark : materialLight;
 
     // --- THIS IS THE FIX ---
     // Read the user's saved settings before creating the editor state.

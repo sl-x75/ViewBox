@@ -68,8 +68,16 @@ async function initializeMainApp(projectPath) {
     theme: 'editor',
     swatches: getSetting('coloris.swatches')
   });
+    Coloris.setInstance('.coloris-input-font', {
+    theme: 'editorfont',
+    swatches: getSetting('coloris.swatches')
+  });
    Coloris.setInstance('.coloris-input-pattern-editor', {
-    theme: 'pattern',
+    theme: 'patternleft',
+    swatches: getSetting('coloris.swatches')
+  });
+     Coloris.setInstance('.coloris-input-pattern-editor', {
+    theme: 'patternright',
     swatches: getSetting('coloris.swatches')
   });
   // --- END REPLACEMENT BLOCK ---

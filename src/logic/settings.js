@@ -9,7 +9,7 @@ import { applyTheme } from './theme.js';
 const DEFAULTS = {
   viewer: {
     backgroundColor: '#FAF9F5',
-    backgroundColorDark: '#31353C'
+    backgroundColorDark: '#404040'
   },
   coloris: {
     swatches: [ '#264653', '#2a9d8f', '#e9c46a', '#f4a261', '#e76f51' ]
@@ -25,7 +25,7 @@ const DEFAULTS = {
   },
 
   codeEditor: {
-    fontSize: 14,
+    fontSize: 13,
     fontFamily: 'monospace',
     wordWrap: false
   },

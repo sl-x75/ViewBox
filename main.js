@@ -244,7 +244,7 @@ function createMenu() {
 async function createWindow() {
   // Define your background colors
   const LIGHT_BG = '#f9fafb';
-  const DARK_BG = '#31353C';
+  const DARK_BG = '#282828';
 
   // Read settings to determine the correct background color
   const userSettings = await readUserSettings();

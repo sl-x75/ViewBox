@@ -54,7 +54,7 @@ export function displayPatternUsageWarning(isUsed, patternId) {
   ruleTitleText.classList.remove('text-green-500'); // Reset color
 
   if (isUsed && patternId) {
-    const buttonHTML = `<button id="copy-pattern-btn" data-original-pattern-id="${patternId}" class="new-rule-btn ml-2 dark:border-gray-500" type="button">Create a Copy</button>`;
+    const buttonHTML = `<button id="copy-pattern-btn" data-original-pattern-id="${patternId}" class="new-rule-btn ml-2 dark:border-gray-700" type="button">Create a Copy</button>`;
     warningArea.innerHTML = `
         <span class="mx-2 text-gray-300">|</span>
         <span class="text-xs whitespace-nowrap text-red-500">#${patternId} is in use</span>

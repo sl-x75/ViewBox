@@ -181,7 +181,7 @@ export async function populateFileList(projectPath, folderName, listContainer) {
               ${formatName(groupName)}
             </button>
             <div class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300 ">
-              <ul class="ps-6 text-[12px] font-[DejaVu_Sans] dark:bg-[#3D424C] dark:shadow-neutral-700/70 dark:text-gray-400">${listItemsHTML}</ul>
+              <ul class="ps-6 text-[12px] font-[DejaVu_Sans] dark:bg-[#313131] dark:shadow-neutral-700/70 dark:text-gray-400">${listItemsHTML}</ul>
             </div>
           </div>
         `;

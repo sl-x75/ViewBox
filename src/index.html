@@ -282,18 +282,18 @@
    <!-- VIEW 1: The Start Page (initially hidden) -->
    <div id="start-page-view" class="start-page" style="visibility:hidden">
  
-     <div id="start-page-content-wrapper" class="w-full" style="position: relative; z-index: 1;">
+     <div id="start-page-content-wrapper" class="w-full " style="position: relative; z-index: 1;">
        <div class="w-full max-w-7xl">            <!-- wrapper to control alignment -->
-         <h1 class="startpage1 text-left">BonsaiBim Manager & Css Editor</h1>
-         <p class="startpage2 text-left">2fillornot2fill?</p>
+         <h1 class="startpage-h1 text-left">BonsaiBim Manager & Css Editor</h1>
+         <p class="startpage-p text-left">2fillornot2fill?</p>
        </div>
 
       <div class="w-full max-w-7xl bg-transparent">
-        <h2 class="startpage3">Recent Projects</h2>
+        <h2 class="startpage-h2">Recent Projects</h2>
            
            <!-- START: NEW HORIZONTAL SCROLL CONTAINER -->
            <div class="overflow-x-auto pb-3">
-             <div id="recent-projects-list" class="flex space-x-4">
+             <div id="recent-projects-list" class="flex space-x-4 scrollbar-hide">
                <!-- Project cards will be dynamically inserted here -->
              </div>
            </div>
@@ -356,7 +356,7 @@
            
            <!-- 1. THE SIDEBAR (with internal tabbing) -->
            <!-- `flex-1` makes this sidebar grow to fill the available vertical space, pushing the info panel down. -->
-           <div id="sidebar" class="flex-1 border-r-1  text-[13px] text-gray-800 flex flex-col overflow-hidden light-dark1">
+           <div id="sidebar" class="flex-1 border-r-1  text-[12.5px] text-gray-800 flex flex-col overflow-hidden light-dark1">
              
              <!-- Top Control Bar (Tabs + Back Button) -->
              <div class="flex-shrink-0 flex justify-between items-center p-3 ">
@@ -364,7 +364,7 @@
                  <button type="button" id="sidebar-project-btn" class="sidebar-tab-btn active  " role="tab">Project</button>
                  <button type="button" id="sidebar-settings-btn" class="sidebar-tab-btn" role="tab">Settings</button>
                </nav>
-               <button id="back-to-start-page-btn" title="Back to Projects" class="hs-tooltip-toggle inline-flex justify-center items-center size-8 rounded-md border border-gray-200 bg-white text-gray-700 shadow-2xs dark:bg-[#3A4150] dark:border-gray-500 dark:text-gray-400 dark:shadow-neutral-700/70 dark:hover:bg-[#495160]">
+               <button id="back-to-start-page-btn" title="Back to Projects" class="hs-tooltip-toggle inline-flex justify-center items-center size-8 rounded-md border border-gray-200 bg-white text-gray-700 shadow-2xs dark:bg-[#313131] dark:border-gray-700 dark:text-gray-400 dark:shadow-neutral-700/70 dark:hover:bg-[#495160]">
                   <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                </button>
              </div>        
@@ -374,7 +374,7 @@
                <!-- Project View -->
                <div id="sidebar-project-view">
                  <div class="px-6 py-4">
-                   <h1 class="font-[DejaVu_Sans] text-[14px] text-start text-gray-800 dark:text-gray-400">
+                   <h1 class="font-[DejaVu_Sans] text-[13px] border border-gray-200 dark:border-[#555555]  rounded-md text-center text-gray-600 dark:text-gray-400">
                      Project Name
                    </h1>
                  </div>
@@ -398,7 +398,7 @@
                            Layouts
                      </button>
                      <div id="accordion-layouts-content" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="accordion-layouts">
-                       <ul id="layouts-list" class="space-y-0 text-[12px] font-[DejaVu_Sans] ps-6 dark:bg-[#3A4150] dark:shadow-neutral-700/70 dark:text-gray-400"></ul>
+                       <ul id="layouts-list" class="space-y-0 text-[12px] font-[DejaVu_Sans] ps-6 dark:bg-[#313131] dark:shadow-neutral-700/70 dark:text-gray-400"></ul>
                      </div>
                    </div>
                    <!-- Sheets Accordion -->
@@ -409,7 +409,7 @@
                        Sheets
                      </button>
                      <div id="accordion-sheets-content" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="accordion-sheets">
-                       <ul id="sheets-list" class="space-y-0 text-[12px] font-[DejaVu_Sans] ps-6 dark:bg-[#3A4150] dark:shadow-neutral-700/70 dark:text-gray-400"></ul>
+                       <ul id="sheets-list" class="space-y-0 text-[12px] font-[DejaVu_Sans] ps-6 dark:bg-[#313131] dark:shadow-neutral-700/70 dark:text-gray-400"></ul>
                      </div>
                    </div>
                  </div>
@@ -490,7 +490,7 @@
                    <!-- Sliders Section -->
                    <div class="space-y-3">
                      <h2 class="text-xs text-[12px] font-semibold  text-gray-500 dark:text-neutral-400">Sliders</h2>
-                     <div class="p-1 border-1 border-gray-200 rounded-lg dark:border-neutral-700">
+                     <div class="p-1 border border-gray-200 rounded-lg dark:border-neutral-700">
                        <p class="text-sm text-[12px]  font-medium dark:text-white">Stroke Width Slider</p>
                        <div class="grid grid-cols-3 gap-2 mt-2">
                          <input type="number" id="setting-slider-sw-min" placeholder="Min" class="py-1 px-1 block  text-sm text-[12px] font-medium w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 ">
@@ -498,7 +498,7 @@
                          <input type="number" id="setting-slider-sw-step" placeholder="Step" class="py-1 px-1 block text-sm text-[12px] font-medium w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 ">
                        </div>
                      </div>
-                     <div class="p-1 border-1 border-gray-200 rounded-lg dark:border-neutral-700">
+                     <div class="p-1 border border-gray-200 rounded-lg dark:border-neutral-700">
                        <p class="text-sm text-[12px]  font-medium dark:text-white">Pattern Scale Slider</p>
                        <div class="grid grid-cols-3 gap-2 mt-2">
                          <input type="number" id="setting-slider-ps-min" placeholder="Min" class="py-1 px-1  block  text-sm text-[12px] font-medium w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 ">
@@ -506,7 +506,7 @@
                          <input type="number" id="setting-slider-ps-step" placeholder="Step" class="py-1 px-1  block text-sm text-[12px] font-medium w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 ">
                        </div>
                      </div>
-                     <div class="p-1 border-1 border-gray-200 rounded-lg dark:border-neutral-700">
+                     <div class="p-1 border border-gray-200 rounded-lg dark:border-neutral-700">
                        <p class="text-sm text-[12px]  font-medium dark:text-white">Pattern Stroke Slider</p>
                        <div class="grid grid-cols-3 gap-2 mt-2">
                          <input type="number" id="setting-slider-psw-min" placeholder="Min" class="py-1 px-1  block text-sm text-[12px] font-medium w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 ">
@@ -536,13 +536,13 @@
           <!-- START: MODIFIED SECTION - The main content area is now a permanent splitter -->
           <div id="main-content-splitter" class="flex-1 " data-hs-layout-splitter='{
             "vertical": true,
-            "verticalSplitterTemplate": "<div><span class=\"absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 block w-6 h-4 flex justify-center items-center bg-white rounded border border-gray-200 text-gray-400 rounded cursor-row-resize hover:bg-gray-100 dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#818a9c]0 dark:hover:bg-neutral-900\"><svg class=\"shrink-0 size-3.5\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"9\" r=\"1\"/><circle cx=\"19\" cy=\"9\" r=\"1\"/><circle cx=\"5\" cy=\"9\" r=\"1\"/><circle cx=\"12\" cy=\"15\" r=\"1\"/><circle cx=\"19\" cy=\"15\" r=\"1\"/><circle cx=\"5\" cy=\"15\" r=\"1\"/></svg></span></div>",
+            "verticalSplitterTemplate": "<div><span class=\"absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 block w-6 h-4 flex justify-center items-center bg-white rounded border border-gray-200 text-gray-400 rounded cursor-row-resize hover:bg-gray-100 dark:bg-[#313131] dark:border dark:border-gray-700 dark:shadow-neutral-700/70 dark:hover:bg-[#545962]0 dark:hover:bg-neutral-900\"><svg class=\"shrink-0 size-3.5\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"9\" r=\"1\"/><circle cx=\"19\" cy=\"9\" r=\"1\"/><circle cx=\"5\" cy=\"9\" r=\"1\"/><circle cx=\"12\" cy=\"15\" r=\"1\"/><circle cx=\"19\" cy=\"15\" r=\"1\"/><circle cx=\"5\" cy=\"15\" r=\"1\"/></svg></span></div>",
             "verticalSplitterClasses": "relative flex border-t border-gray-200 dark:border-neutral-700"
           }'>
             <div class="flex flex-col h-full" data-hs-layout-splitter-vertical-group>
               <!-- TOP PANEL: SVG Viewer -->
-              <div data-hs-layout-splitter-item="73.0" class="overflow-hidden  border-1 border-gray-300  dark:border-gray-500">
-                <div id="viewer-container" class="w-full h-full relative bg-[#FAF9F5] dark:bg-[#31353C]">
+              <div data-hs-layout-splitter-item="73.0" class="overflow-hidden  border border-gray-300  dark:border-gray-700">
+                <div id="viewer-container" class="w-full h-full relative bg-[#FAF9F5] dark:bg-[#282828]">
                   <div id="h-guides" class="guides horizontal"></div>
                   <div id="v-guides" class="guides vertical"></div>
                   <div id="svg-wrapper">
@@ -553,12 +553,12 @@
                   <div id="ruler-corner"></div>
 
                   <!-- PATTERN EDITOR PANEL (REPLACE THE ENTIRE DIV) -->
-                  <div id="pattern-editor-panel" class="pattern-editor-panel z-[9999] hidden" data-current-sub-element="">
+                  <div id="pattern-editor-panel" class="pattern-editor-panel z-999 hidden" data-current-sub-element="">
                     <div class="flex items-center justify-between mb-4">
-                      <h4 class="flex-1 text-[13px] px-2 py-[0.27rem] bg-gray-200 rounded-r-none rounded-l-sm font-[DejaVu_Sans] text-gray-700  border-white dark:bg-[#818a9c] dark:border-dashed dark:border-gray-500 dark:shadow-neutral-700/70">
+                      <h4 class="flex-1 text-[12.5px] px-2 py-[0.27rem] bg-gray-200 rounded-r-none rounded-l-sm font-[DejaVu_Sans] text-gray-800 dark:text-gray-400  border-white dark:bg-[#545962] dark:border-dashed dark:border-gray-700 dark:shadow-neutral-700/70">
                         Pattern Editor
                       </h4>
-                      <button id="close-pattern-editor" class="inline-flex items-center  justify-between text-gray-500 hover:text-gray-800 text-[17px] px-2 py-[0.27rem] bg-gray-200 hover:bg-[#F1FBFF] border border-gray-200 rounded-l-none rounded-r-sm leading-none  dark:bg-[#818A9C]  dark:border-[#818A9C] dark:shadow-neutral-700/70 dark:focus:border-gray-400  dark:focus:ring-gray-600  dark:hover:bg-[#6B7283] ">
+                      <button id="close-pattern-editor" class="close-pattern-editor">
                         &times;
                       </button>
                     </div>                  
@@ -583,7 +583,7 @@
                               <span class="pattern-editor-labels ">Rotate</span>
                             </button>
                             <div id="pattern-angle-options-menu"
-                                 class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-24 bg-white shadow-md rounded-lg p-1 mt-2 dark:bg-[#31353C] dark:border  dark:border-neutral-700"
+                                 class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-24 bg-white shadow-md rounded-lg p-1 mt-2 dark:bg-[#282828] dark:border  dark:border-neutral-700"
                                  role="menu"
                                  aria-orientation="vertical">
                               <!-- Angle options will be injected here -->
@@ -600,7 +600,7 @@
                         <div class="flex flex-col space-y-2">
                           <!-- The Dropdown to select an element -->
                           <div class="flex items-center gap-x-2">
-                            <label for="pattern-sub-element-selector" class="text-sm text-[12px] font-[DejaVu_Sans] text-gray-700 shrink-0">Target:</label>
+                            <label for="pattern-sub-element-selector" class="text-sm text-[12px] font-[DejaVu_Sans] text-gray-400 shrink-0">Target:</label>
                             <!-- And replace it with this custom component structure -->
                            <div class="relative w-full">
                              <input type="hidden" id="pattern-sub-element-selector-value">
@@ -608,7 +608,7 @@
                                <span id="pattern-sub-element-selected-text" class="truncate"></span>
                                <svg class="w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                              </button>
-                             <div id="pattern-sub-element-options-wrapper" class="shadow-md absolute hidden z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#3A4150] outline-gray-100" style="bottom: 100%; margin-bottom: 4px;">
+                             <div id="pattern-sub-element-options-wrapper" class="shadow-md absolute hidden z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg dark:bg-[#313131] dark:border dark:border-gray-700 dark:shadow-neutral-700/70 dark:hover:bg-[#313131] outline-gray-100" style="bottom: 100%; margin-bottom: 4px;">
                                <ul id="pattern-sub-element-options" class="p-1 max-h-48 overflow-y-auto outline-transparent"></ul>
                              </div>
                            </div>
@@ -617,11 +617,11 @@
                           <div class="flex items-center justify-around">
                             <div class="full">
                               <label for="pattern-element-fill" class="block text-sm text-[12px] font-[DejaVu_Sans] text-gray-700 text-center">Fill</label>
-                              <input type="text" id="pattern-element-fill" class="coloris-input-pattern-editor" value="#ffffff00" data-coloris>
+                              <input type="text" id="pattern-element-fill" class="coloris-input-pattern-editor-left" value="#ffffff00" data-coloris>
                             </div>
                             <div class="full">
                               <label for="pattern-element-stroke" class="block text-sm text-[12px] font-[DejaVu_Sans] text-gray-700 text-center">Stroke</label>
-                              <input type="text" id="pattern-element-stroke" class="coloris-input-pattern-editor" value="#000000ff" data-coloris>
+                              <input type="text" id="pattern-element-stroke" class="coloris-input-pattern-editor-right" value="#000000ff" data-coloris>
                             </div>
                           </div>
                           <div class="flex items-center justify-between gap-x-4">
@@ -639,11 +639,11 @@
               <!-- BOTTOM PANEL: Code Editor (Initially Hidden) -->
           <div id="code-editor-splitter-container" data-hs-layout-splitter-item="28" class="overflow-hidden hidden" style="min-width: 0;">
             <!-- START: REPLACE THIS ENTIRE BLOCK -->
-            <div id="code-editor-panel" class="w-full h-full bg-white  dark:bg-[#3A4150]  dark:border-gray-500   rounded-lg  flex flex-col">
+            <div id="code-editor-panel" class="w-full h-full bg-white  dark:bg-[#313131]  dark:border-gray-700   rounded-lg  flex flex-col">
               
               <!-- Header for the code editor -->
               <div class="flex-shrink-1 flex justify-between items-center p-2   h-[38px] light-dark3">
-                <span id="code-editor-filename" class="textblock-2-Css-Editor-labels truncate"></span>
+                <span id="code-editor-filename" class="Css-Editor-labels truncate"></span>
 
                 <!-- NEW: Integrated Search Controls (hidden by default) -->
                 <div id="code-editor-search-controls" class="hidden">
@@ -688,14 +688,14 @@
 
         <!-- Bottom section for CSS Editor Toolbar -->
         <div id="css-editor-container" class="min-h-13  flex-shrink-0 hidden">
-          <div class="w-full  border-1  p-1 z-20 flex flex-wrap items-center justify-center gap-x-2 text-[12px] light-dark2">
+          <div class="w-full  border  p-1 z-20 flex flex-wrap items-center justify-center gap-x-2 text-[12px] light-dark2">
             
             <!-- Info Displays -->
-            <p id="css-file-name" class=" textblock-2-Css-Editor-labels shrink-0  "></p>
+            <p id="css-file-name" class=" Css-Editor-labels shrink-0  "></p>
 
             
             <div class="flex-1 flex items-center gap-x-2">
-                <div id="rule-title-container" class="textblock-3-ReadOnly  flex items-center justify-center w-full ">
+                <div id="rule-title-container" class="readOnly  flex items-center justify-center w-full ">
                     <span id="rule-title-text" class="truncate"></span>
                     <div id="rule-title-warning-area" class="flex items-center shrink-0"></div>
                 </div>
@@ -705,9 +705,9 @@
             
             <!-- Fill Controls -->
             <div class="control-group flex items-center shrink" id="fill-control-group">
-                <label class="textblock-2-Css-Editor-labels ">Fill:</label>
+                <label class="Css-Editor-labels">Fill:</label>
             </div>
-            <div id="fill-switcher" class="flex items-center gap-x-1 textblock-2-Css-Editor-Dropdown  shrink">
+            <div id="fill-switcher" class="flex items-center gap-x-1 Css-Editor-Dropdown  shrink">
               <!-- NEW FILL TYPE SELECT -->
               <div class="relative w-40 shrink-0">
                 <input type="hidden" id="fill-type" value="pattern">
@@ -715,7 +715,7 @@
                   <span id="fill-type-selected-text">Pattern</span>
                   <svg class="w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
-                <div id="fill-type-options-wrapper" class="shadow-md absolute hidden z-50 w-full mt-1 bg-white  border border-gray-200 rounded-lg dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#818a9c] " style="bottom: 100%; margin-bottom: 4px;">
+                <div id="fill-type-options-wrapper" class="shadow-md absolute hidden z-50 w-full mt-1 bg-white  border border-gray-200 rounded-lg dark:bg-[#313131] dark:border dark:border-gray-700 dark:shadow-neutral-700/70 dark:hover:bg-[#545962] " style="bottom: 100%; margin-bottom: 4px;">
                   <ul id="fill-type-options" class="p-1  light-dark2 " >
                     <li data-value="pattern" class="combobox-int">Pattern</li>
                     <li data-value="color" class="combobox-int">Solid Color</li>
@@ -730,14 +730,14 @@
               <!-- NEW CUSTOM PATTERN COMBOBOX -->
               <div id="fill-pattern-combobox" class="relative">
                 <input id="fill-pattern-input" class="dropdown" type="text" autocomplete="off">
-                <ul id="fill-pattern-options" class="shadow-md absolute hidden z-50 w-full max-h-48 p-1 bg-white border border-gray-200  dark:border-gray-600  dark:focus-ring-gray-600 rounded-lg overflow-y-auto dark:bg-[#3A4150]  dark:shadow-neutral-700/70  dark:text-gray-400 combobox-int outline-gray-100 scrollbar-hide" style="bottom: 100%; margin-bottom: 4px;">
+                <ul id="fill-pattern-options" class="shadow-md absolute hidden z-50 w-full max-h-48 p-1 bg-white border border-gray-200  dark:border-gray-600  dark:focus-ring-gray-600 rounded-lg overflow-y-auto dark:bg-[#313131]  dark:shadow-neutral-700/70  dark:text-gray-400 combobox-int outline-gray-100 scrollbar-hide" style="bottom: 100%; margin-bottom: 4px;">
                   <!-- Pattern options will be dynamically inserted here -->
                 </ul>
               </div>
 
-              <div id="pattern-preview-container" class="border-gray-200 rounded-lg shrink-0 ">
-                <svg id="pattern-preview" width="40" height="40" viewBox="0 0 20 20" class="rounded-md">
-                  <rect width="40" height="40" fill="white" stroke="#ccc"/>
+              <div id="pattern-preview-container" class="border-gray-200 rounded-lg shrink-0 dark:bg-gray-300 ">
+                <svg id="pattern-preview" width="40" height="40" viewBox="0 0 20 20"  class="rounded-md border border-gray-200  ">
+                  <rect width="40" height="40" fill="white" stroke="#ccc" transform="translate(-10 -10)" />
                 </svg>
               </div>
             </div>
@@ -745,13 +745,13 @@
             <!-- Stroke Controls -->
             <div class="control-group" id="stroke-color-control-group" style="display: none;">
               <div class="flex items-center gap-x-2">
-                <label class="textblock-2-Css-Editor-labels">Stroke Color:</label>
+                <label class="Css-Editor-labels">Stroke Color:</label>
                 <input type="text" id="stroke-color" class="coloris-input" value="#ffffff" data-coloris>
                 </div>
               </div>
             <div class="control-group" id="stroke-width-control-group" style="display: none;">
               <div class="flex items-center gap-x-2">
-                <label class="textblock-2-Css-Editor-labels">Stroke Width:</label>
+                <label class="Css-Editor-labels">Stroke Width:</label>
                 <div class="flex w-40 items-center gap-x-2">
                   <input type="range" id="stroke-width" min="0" max="2" step="0.05" value="0.2" class="css-editor-slider">
                   <span id="stroke-width-value" class="slider-num">0.2</span>
@@ -760,7 +760,7 @@
             </div>
             <div class="control-group" id="stroke-dasharray-control-group" style="display: none;">
               <div class="flex items-center gap-x-2 ">
-                <label class="textblock-2-Css-Editor-labels">Dash Array:</label>
+                <label class="Css-Editor-labels">Dash Array:</label>
                 <input type="text" id="stroke-dasharray" placeholder="e.g. 3, 2.2" class="slider-num  dashedlines">
               </div>
             </div>    
@@ -768,7 +768,7 @@
             <!-- START: Marker Content Stroke (Initially Hidden) -->
             <div class="control-group" id="marker-content-stroke-control-group" style="display: none;">
               <div class="flex items-center gap-x-2">
-                <label class="textblock-2-Css-Editor-labels">Marker Stroke:</label>
+                <label class="Css-Editor-labels">Marker Stroke:</label>
                 <input type="text" id="marker-content-stroke-color" class="coloris-input" value="#000000" data-coloris>
               </div>
             </div>
@@ -778,7 +778,7 @@
            <!-- Find the #marker-start-control-group -->
            <div class="control-group" id="marker-start-control-group" style="display: none;">
              <div class="flex items-center gap-x-2 shrink">
-               <label class="textblock-2-Css-Editor-labels shrink-0">Marker Start:</label>
+               <label class="Css-Editor-labels shrink-0">Marker Start:</label>
                <!-- Replace this <select>: -->
                <!-- <select id="marker-start" class="dropdown"></select> -->
                <!-- With this custom component: -->
@@ -788,7 +788,7 @@
                    <span id="marker-start-selected-text" class="truncate">None</span>
                    <svg class="w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"   stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                  </button>
-                 <div id="marker-start-options-wrapper" class="shadow-md absolute hidden z-50 w-full max-h-48 p-1 bg-white border border-gray-200  dark:border-gray-600  dark:focus-ring-gray-600 rounded-lg overflow-y-auto dark:bg-[#3A4150]  dark:shadow-neutral-700/70  dark:text-gray-400 combobox-int outline-gray-100 scrollbar-hide" style="bottom: 100%;    margin-bottom: 4px;">
+                 <div id="marker-start-options-wrapper" class="shadow-md absolute hidden z-50 w-full max-h-48 p-1 bg-white border border-gray-200  dark:border-gray-600  dark:focus-ring-gray-600 rounded-lg overflow-y-auto dark:bg-[#313131]  dark:shadow-neutral-700/70  dark:text-gray-400 combobox-int outline-gray-100 scrollbar-hide" style="bottom: 100%;    margin-bottom: 4px;">
                    <ul id="marker-start-options" class="p-1 max-h-48 overflow-y-auto outline-transparent scrollbar-hide"></ul>
                  </div>
                </div>
@@ -798,7 +798,7 @@
            <!-- Find the #marker-end-control-group -->
            <div class="control-group" id="marker-end-control-group" style="display: none;">
              <div class="flex items-center gap-x-2 shrink">
-               <label class="textblock-2-Css-Editor-labels shrink-0">Marker End:</label>
+               <label class="Css-Editor-labels shrink-0">Marker End:</label>
                <!-- Replace this <select>: -->
                <!-- <select id="marker-end" class="dropdown"></select> -->
                <!-- With this custom component: -->
@@ -808,7 +808,7 @@
                    <span id="marker-end-selected-text" class="truncate">None</span>
                    <svg class="w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"  stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                  </button>
-                 <div id="marker-end-options-wrapper" class="shadow-md absolute hidden z-50 w-full max-h-48 p-1 bg-white border border-gray-200  dark:border-gray-600  dark:focus-ring-gray-600 rounded-lg overflow-y-auto dark:bg-[#3A4150]  dark:shadow-neutral-700/70  dark:text-gray-400 combobox-int outline-gray-100  scrollbar-hide " style="bottom: 100%; margin-bottom: 4px;">
+                 <div id="marker-end-options-wrapper" class="shadow-md absolute hidden z-50 w-full max-h-48 p-1 bg-white border border-gray-200  dark:border-gray-600  dark:focus-ring-gray-600 rounded-lg overflow-y-auto dark:bg-[#313131]  dark:shadow-neutral-700/70  dark:text-gray-400 combobox-int outline-gray-100  scrollbar-hide " style="bottom: 100%; margin-bottom: 4px;">
                    <ul id="marker-end-options" class="p-1 max-h-48 overflow-y-auto  scrollbar-hide outline-transparent "></ul>
                  </div>
                </div>
@@ -817,43 +817,43 @@
 
             <!-- START: Text Controls -->
             <div id="text-controls-container" class="flex items-center gap-x-4" style="display: none;">
-              <!-- START: NEW CUSTOM FONT FAMILY COMBOBOX -->
-              <div class="control-group flex items-center gap-x-2 shrink">
-                <label class="textblock-2-Css-Editor-labels shrink-0">Font:</label>
-                <!-- Simple wrapper for positioning the dropdown -->
-                <div id="font-family-combobox" class="relative ">
-                  <input id="font-family-input" class="dropdown " type="text" autocomplete="off">
-                  <!-- The dropdown list will be a simple <ul> -->
-                  <ul id="font-family-options" class="shadow-md  absolute hidden z-50 w-full max-h-48 p-1 bg-white border border-gray-200 rounded-lg overflow-y-auto combobox-int dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#3A4150] scrollbar-hide" style="bottom: 100%; margin-bottom: 4px;">
-                    <!-- Font options will be dynamically inserted here -->
-                  </ul>
-                </div>
-              </div>
-  <!-- END: NEW CUSTOM FONT FAMILY COMBOBOX -->
+
               <!-- Font Color -->
               <div class="control-group full items-center gap-x-2 shrink">
-                <label class="textblock-2-Css-Editor-labels">Font Color:</label>
-                <input type="text" id="font-fill-color" class="coloris-input" value="#000000" data-coloris>
+                <label class="Css-Editor-labels">Font Color:</label>
+                <input type="text" id="font-fill-color" class="coloris-input-font" value="#000000" data-coloris>
               </div>
               <!-- Font Size -->
               <div class="control-group flex items-center gap-x-2 shrink">
-                <label class="textblock-2-Css-Editor-labels shrink-0">Font Size:</label>
+                <label class="Css-Editor-labels shrink-0">Font Size:</label>
                 <!-- ADD AN ID TO THIS WRAPPER DIV -->
-                <div id="font-size-control-wrapper" class="py-0 px-2 bg-white border border-gray-200 rounded-lg  dark:bg-[#454f65]  dark:border-gray-500 dark:shadow-neutral-700/70 dark:focus:border-gray-400
+                <div id="font-size-control-wrapper" class="py-0 px-2 bg-white border border-gray-200 rounded-lg  dark:bg-[#404040]  dark:border-gray-700 dark:shadow-neutral-700/70 dark:focus:border-gray-400
        dark:focus:ring-gray-600 " data-hs-input-number='{"step": 0.05}'>
                   <div class="w-full flex justify-between items-center gap-x-3">
                     <div class="grow">
-                      <input id="font-size-input" class="textblock-2-Css-Editor-Dropdown  w-16 py-[9px] bg-transparent border-0  focus:ring-0 [&::-webkit-inner-spin-button]:appearance-none [& ::-webkit-outer-spin-button]:appearance-none slider-num " style="-moz-appearance: textfield;" type="number"  value="4.13"  data-hs-input-number-input="">
+                      <input id="font-size-input" class="Css-Editor-Dropdown  w-16 py-[9px] bg-transparent border-0  focus:ring-0 [&::-webkit-inner-spin-button]:appearance-none [& ::-webkit-outer-spin-button]:appearance-none slider-num " style="-moz-appearance: textfield;" type="number"  value="4.13"  data-hs-input-number-input="">
                     </div>
                     <div class="flex justify-end items-center gap-x-1">
-                      <button type="button" class="size-5 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm dark:bg-[#6B7283]  dark:border-gray-500 dark:shadow-neutral-700/70 dark:focus:border-gray-400  dark:focus:ring-gray-600  hover:bg-gray-50 dark:hover:bg-[#6B7283]  disabled:opacity-50 disabled:pointer-events-none" data-hs-input-number-decrement="">
+                      <button type="button" class="size-5 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm dark:bg-[#6B7283]  dark:border-gray-700 dark:shadow-neutral-700/70 dark:focus:border-gray-400  dark:focus:ring-gray-600  hover:bg-gray-50 dark:hover:bg-[#6B7283]  disabled:opacity-50 disabled:pointer-events-none" data-hs-input-number-decrement="">
                         <svg class="shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path></svg>
                       </button>
-                      <button type="button" class="size-5 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50  dark:bg-[#6B7283]  dark:border-gray-500 dark:shadow-neutral-700/70 dark:focus:border-gray-400  dark:focus:ring-gray-600  hover:bg-gray-50 dark:hover:bg-[#6B7283]  disabled:opacity-50 disabled:pointer-events-none" data-hs-input-number-increment="">
+                      <button type="button" class="size-5 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm   dark:bg-[#6B7283]  dark:border-gray-700 dark:shadow-neutral-700/70 dark:focus:border-gray-400  dark:focus:ring-gray-600  hover:bg-gray-50 dark:hover:bg-[#6B7283]  disabled:opacity-50 disabled:pointer-events-none" data-hs-input-number-increment="">
                         <svg class="shrink-0 size-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
                       </button>
                     </div>
                   </div>
+                </div>
+              </div>
+                            <!-- START: NEW CUSTOM FONT FAMILY COMBOBOX -->
+              <div class="control-group flex items-center gap-x-2 shrink">
+                <label class="Css-Editor-labels shrink-0">Font:</label>
+                <!-- Simple wrapper for positioning the dropdown -->
+                <div id="font-family-combobox" class="relative ">
+                  <input id="font-family-input" class="dropdown " type="text" autocomplete="off">
+                  <!-- The dropdown list will be a simple <ul> -->
+                  <ul id="font-family-options" class="shadow-md  absolute hidden z-50 w-full max-h-48 p-1 bg-white border border-gray-200 rounded-lg overflow-y-auto combobox-int dark:bg-[#313131] dark:border dark:border-gray-700 dark:shadow-neutral-700/70 dark:hover:bg-[#313131] scrollbar-hide" style="bottom: 100%; margin-bottom: 4px;">
+                    <!-- Font options will be dynamically inserted here -->
+                  </ul>
                 </div>
               </div>
             </div>
@@ -862,26 +862,26 @@
             <div id="marker-styler-panel" class="hidden items-center gap-x-4" data-current-sub-element="">
               <!-- Sub-Element Dropdown -->
               <div class="flex items-center gap-x-2">
-                <label class="textblock-2-Css-Editor-labels shrink-0">Target:</label>
+                <label class="Css-Editor-labels shrink-0">Target:</label>
                 <div class="relative w-40">
                   <input type="hidden" id="marker-sub-element-selector-value">
                   <button type="button" id="marker-sub-element-button" class="dropdown text-left w-full flex justify-between items-center outline-gray-100">
                     <span id="marker-sub-element-selected-text" class="truncate"></span>
                     <svg class="w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                   </button>
-                  <div id="marker-sub-element-options-wrapper" class="shadow-md absolute hidden z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg dark:bg-[#3A4150] dark:border dark:border-gray-500" style="bottom: 100%; margin-bottom: 4px;">
+                  <div id="marker-sub-element-options-wrapper" class="shadow-md absolute hidden z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg dark:bg-[#313131] dark:border dark:border-gray-700" style="bottom: 100%; margin-bottom: 4px;">
                     <ul id="marker-sub-element-options" class="p-1 max-h-48 overflow-y-auto outline-transparent"></ul>
                   </div>
                 </div>
               </div>
               <!-- Fill Color -->
               <div class="control-group full items-center gap-x-2 shrink">
-                <label class="textblock-2-Css-Editor-labels">Fill:</label>
+                <label class="Css-Editor-labels">Fill:</label>
                 <input type="text" id="marker-element-fill" class="coloris-input" value="#000000" data-coloris>
               </div>
               <!-- Stroke Color -->
               <div class="control-group full items-center gap-x-2 shrink">
-                <label class="textblock-2-Css-Editor-labels">Stroke:</label>
+                <label class="Css-Editor-labels">Stroke:</label>
                 <input type="text" id="marker-element-stroke" class="coloris-input" value="#000000" data-coloris>
               </div>
             </div>
@@ -893,17 +893,17 @@
             <div id="symbol-editor-controls" class="flex items-center gap-x-4" style="display: none;">
               <!-- Symbol Fill Color -->
               <div class="control-group full items-center gap-x-2 shrink">
-                <label class="textblock-2-Css-Editor-labels">Fill:</label>
+                <label class="Css-Editor-labels">Fill:</label>
                 <input type="text" id="symbol-fill-color" class="coloris-input" value="#ffffff00" data-coloris>
               </div>
               <!-- Symbol Stroke Color -->
               <div class="control-group full items-center gap-x-2 shrink">
-                <label class="textblock-2-Css-Editor-labels">Stroke:</label>
+                <label class="Css-Editor-labels">Stroke:</label>
                 <input type="text" id="symbol-stroke-color" class="coloris-input" value="#000000" data-coloris>
               </div>
               <!-- Symbol Stroke Width -->
               <div class="control-group flex items-center gap-x-2 shrink">
-                <label class="textblock-2-Css-Editor-labels shrink-0">Stroke Width:</label>
+                <label class="Css-Editor-labels shrink-0">Stroke Width:</label>
                 <div class="flex w-40 items-center gap-x-2">
                   <input type="range" id="symbol-stroke-width" min="0" max="2" step="0.05" value="0.2" class="css-editor-slider">
                   <span id="symbol-stroke-width-value" class="slider-num">0.2</span>
@@ -920,7 +920,7 @@
                 <svg class="w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
               </button>
               <div id="symbol-inspector-options-wrapper" class="shadow-md absolute hidden z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg " style="bottom: 100%; margin-bottom: 4px;">
-                <ul id="symbol-inspector-list" class="p-1 max-h-48 overflow-y-auto outline-transparent textblock-2-Css-Editor-labels dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#818a9c] scrollbar-hide">
+                <ul id="symbol-inspector-list" class="p-1 max-h-48 overflow-y-auto outline-transparent Css-Editor-labelsdark:bg-[#313131] dark:border dark:border-gray-700 dark:shadow-neutral-700/70 dark:hover:bg-[#545962] scrollbar-hide">
                   <!-- List items will be dynamically inserted here -->
                 </ul>
               </div>
@@ -954,7 +954,7 @@
              </div>    
             <!-- Add this to your main HTML file, for example, near the save button -->
             <div id="manipulation-toggle" class="manipulation-control" style="display: none;">
-              <label class="toggle-switch textblock-2-Css-Editor-labels">
+              <label class="toggle-switch Css-Editor-labels">
                 <input type="checkbox" id="manipulation-enabled" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-50 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox" checked="">
                 <span class="toggle-slider"></span>
                 <span class="toggle-label">Manipulation</span>

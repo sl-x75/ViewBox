@@ -257,13 +257,13 @@ export async function loadSvgFile(filePath) {
           let finalHTML;
           if (key === 'Metadata' && typeof value === 'string' && value.includes(',')) {
             const formattedValue = value.split(',').join(',<br>');
-            finalHTML = `<span class="font-[Saira] text-[13px] font-semibold">${key}:</span><br>${formattedValue}`;
+            finalHTML = `<span class="font-[Saira] text-[12.5px] font-semibold">${key}:</span><br>${formattedValue}`;
           } else if ((key === 'Stylesheet' || key === 'Markers' || key === 'Symbols' || key === 'Patterns' || key === 'ShadingStyles') && typeof value === 'string') {
             const fullPath = path.join(projectPath, value);
             const displayValue = `./${path.basename(value)}`;
             finalHTML = `<span class="font">${key}:</span> <span class="clickable-file-path text-[#60a5fa] cursor-pointer hover:underline" data-full-file-path="${fullPath}">${displayValue}</span>`;
           } else {
-            finalHTML = `<span class=" font-[Saira]  text-[13px] text-gray-500">${key}:</span> ${value}`;
+            finalHTML = `<span class=" font-[Saira]  text-[12.5px] text-gray-500">${key}:</span> ${value}`;
           }
           const p = document.createElement('p');
           p.innerHTML = finalHTML;

@@ -14,8 +14,8 @@ let currentPatternId = null;
 
     // --- START: ADD THIS BLOCK ---
     // Initialize the color pickers specific to the pattern editor panel
-    Coloris.setInstance('#pattern-editor-panel .coloris-input-pattern-editor', {
-        theme: 'pattern',
+    Coloris.setInstance('#pattern-editor-panel .coloris-input-pattern-editor-left', {
+        theme: 'patternleft',
         themeMode: 'light',
         parent: '#main-app-view', // Constrain the picker to the app view
         swatches: [
@@ -28,6 +28,23 @@ let currentPatternId = null;
         ]
     });
     // --- END: ADD THIS BLOCK ---
+
+        // Initialize the color pickers specific to the pattern editor panel
+    Coloris.setInstance('#pattern-editor-panel .coloris-input-pattern-editor-right', {
+        theme: 'patternrigrht',
+        themeMode: 'light',
+        parent: '#main-app-view', // Constrain the picker to the app view
+        swatches: [
+          '#264653',
+          '#2a9d8f',
+          '#e9c46a',
+          '#f4a261',
+          '#e76f51',
+          '#264653',
+        ]
+    });
+    // --- END: ADD THIS BLOCK ---
+
 
 
 

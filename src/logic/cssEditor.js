@@ -78,7 +78,21 @@ document.addEventListener('DOMContentLoaded', () => {
       '#f4a261',
       '#e76f51',
       '#d56062',
-      '#FF00FF'
+      '#FF00FF',
+    ]
+  });
+
+    Coloris.setInstance('.coloris-input-font', {
+    theme: 'editorfont',
+    themeMode: 'light', // Or 'light', this is required to enable themes
+    swatches: [
+      '#264653',
+      '#2a9d8f',
+      '#e9c46a',
+      '#f4a261',
+      '#e76f51',
+      '#d56062',
+      '#FF00FF',
     ]
   });
 

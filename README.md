@@ -7,6 +7,7 @@ ViewBox is a drawing manager and CSS editor designed specifically for the Bonsai
 
 The application use the web-ifc to read the ifc file and extract all the necessary informations about the active drawing assets. A file watcher runs in the background, detect drawing updates or new drawings in the Ifc and update the Dom and the navigation panel. 
 Important: When you generate a new drawing, you must also save the  .ifc file. The application needs the updated IFC data to identify the drawing's TargetView (e.g., "Plan View," "Section View") and Fill Mode which are essentials but also EPSet&PSet etc . If the IFC file is not saved, the new drawing will temporarily appear in an "Uncategorized" folder in the Navigation Panel and will not have the correct styling. As soon as the watcher detects the saved IFC file, it will update the interface, and the drawing will move to its correct folder and also will update the Dom(Viewer).
+The same applies to underlays images
 
 ### IMPORTANT!!!  To ensure the application works correctly you need to download  specifically structured  default.css and symbols.svg 
 As for the patterns  i have include a `"<rect width="100%" height="100%"/>"` to the patterns  which allow the background. 

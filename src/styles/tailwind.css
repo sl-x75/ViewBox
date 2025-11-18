@@ -70,74 +70,68 @@
   
    @layer components {
     .light-dark1 {
-      @apply bg-white  border-t-1 border-b-1 border-l-0 border-gray-300  dark:bg-[#3D424C] dark:border-l-0 dark:border-gray-500 dark:shadow-neutral-700/70
+      @apply bg-white  border-t-1 border-b-1 border-l-0 border-gray-300  dark:bg-[#313131] dark:border-l-0 dark:border-gray-700 dark:shadow-neutral-700/70
     }
   }     
 
     @layer components {
     .light-dark2 {
-      @apply  bg-white border-gray-300 dark:bg-[#3A4150]  dark:border-gray-500 dark:shadow-neutral-700/70 dark:text-gray-400 outline-none
+      @apply  bg-white border-gray-300 dark:bg-[#313131]  dark:border-gray-700 dark:shadow-neutral-700/70 dark:text-gray-400 outline-none
     }
   }
 
-     @layer components {
+   @layer components {
     .light-dark3 {
-      @apply  p-6 bg-[#CDCDCA] dark:bg-[#31353C]  dark:border-gray-500 dark:shadow-neutral-700/70
+      @apply  p-6 bg-[#CDCDCA] dark:bg-[#282828]  dark:border-gray-700 dark:shadow-neutral-700/70
     }
   }
 
-       @layer components {
-    .light-dark4 {
-      @apply  dark:bg-[#5c6e8d] dark:border-gray-700 dark:shadow-neutral-700/70 
-    }
-  }
-
-         @layer components {
+    @layer components {
     .modal {
-      @apply  flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl pointer-events-auto dark:bg-[#31353C]  dark:border-neutral-700 dark:shadow-neutral-700/70 font-[DejaVu_Sans] text-[13px]  text-gray-600 dark:text-gray-400 
+      @apply  flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl pointer-events-auto dark:bg-[#282828]  dark:border-neutral-700 dark:shadow-neutral-700/70 font-[DejaVu_Sans] text-[12.5px]  text-gray-600 dark:text-gray-400 
     }
   }
 
-           @layer components {
+   @layer components {
     .modal-label {
-      @apply  dark:bg-[#31353C]  dark:border-gray-700 dark:shadow-neutral-700/70 font-[DejaVu_Sans] text-[13px]  text-gray-600  dark:text-gray-400 outline-none
+      @apply  dark:bg-[#282828]  dark:border-gray-700 dark:shadow-neutral-700/70 font-[DejaVu_Sans] text-[12.5px]  text-gray-600  dark:text-gray-400 outline-none
     }
   }
 
-               @layer components {
+    @layer components {
     .modal-label-p {
-      @apply  dark:bg-[#31353C]  dark:border-gray-700 dark:shadow-neutral-700/70  outline-none font-[DejaVu_Sans] text-[13px]  text-gray-600  dark:text-gray-400 
+      @apply  dark:bg-[#282828]  dark:border-gray-700 dark:shadow-neutral-700/70  outline-none font-[DejaVu_Sans] text-[12.5px]  text-gray-600  dark:text-gray-400 
     }
   }
 
-             @layer components {
+    @layer components {
     .modal-label-h3 {
-      @apply  dark:bg-[#31353C]  dark:border-gray-700 dark:shadow-neutral-700/70  outline-none font-[DejaVu_Sans] text-[13px]  text-gray-600  dark:text-gray-400 
+      @apply  dark:bg-[#282828]  dark:border-gray-700 dark:shadow-neutral-700/70  outline-none font-[DejaVu_Sans] text-[12.5px]  text-gray-600  dark:text-gray-400 
     }
   }
 
-               @layer components {
+    @layer components {
     .modal-input {
-      @apply  py-[6px] px-3 block w-full  rounded-md  focus:border-gray-200  focus:ring-gray-100  bg-white border-gray-200 dark:bg-[#454f65]  dark:border-gray-500 dark:shadow-neutral-700/70 dark:focus:border-gray-400
+      @apply  py-[6px] px-3 block w-full  rounded-md  focus:border-gray-200  focus:ring-gray-100  bg-white border-gray-200 dark:bg-[#404040]  dark:border-gray-700 dark:shadow-neutral-700/70 dark:focus:border-gray-400
        dark:focus:ring-gray-600 
     }
   }
 
-         @layer components {
+    @layer components {
     .start-page {
-      @apply  flex-1 flex flex-col items-center justify-center bg-[#CDCDCA] dark:bg-[#31353C] pr-8 pl-8 pb-0 pt-20
+      @apply  flex-1 flex flex-col items-center justify-center scrollbar-hide bg-[#CDCDCA] dark:bg-[#282828] pr-8 pl-8 pb-0 pt-20
     }
   }
 
     @layer components {
     .dark-textblock-4-ReadOnly {
-      @apply h-[40px] px-3 w-full  border-1 border-gray-100 rounded-md  font-[DejaVu_Sans] text-[12px] bg-gray-50  focus:border-gray-200 focus:ring-gray-200   text-green-700 text-center dark:bg-[#455269] dark:border-neutral-700 dark:shadow-neutral-700/70 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+      @apply h-[40px] px-3 w-full  border-1 border-gray-100 rounded-md  font-[DejaVu_Sans] text-[12px] bg-gray-50  focus:border-gray-200 focus:ring-gray-200   text-green-700 text-center dark:bg-[#3B3B3B] dark:border-neutral-700 dark:shadow-neutral-700/70 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !!!DEL */
     }
   }
 
    @layer components {
     .patt-advise {
-      @apply py-[4px] px-3 w-fit  border-gray-100 rounded-md text-[10px] text-center focus:border-gray-200 focus:ring-gray-200 bg-gray-50
+      @apply py-[4px] px-3 w-fit  border-gray-100 rounded-md text-[10px] text-center focus:border-gray-200 focus:ring-gray-200 bg-gray-50 /* !!!DEL*/
     }
   }   
 
@@ -155,7 +149,7 @@
 
 @layer components { 
   .default-rules {
-    @apply absolute bottom-0 left-[0px] right-[0px]  text-[13px]  h-6 z-10 flex flex-nowrap items-center gap-x-4;
+    @apply absolute bottom-0 left-[0px] right-[0px]  text-[12.5px]  h-6 z-10 flex flex-nowrap items-center gap-x-4;
   }
 }
  
@@ -165,10 +159,16 @@
       @apply p-1 h-10 w-10 block   cursor-pointer rounded-lg z-9999 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
     }
   }
+
+    @layer components {
+    .coloris-input-font {
+      @apply p-1 h-10 w-10 block   cursor-pointer rounded-lg z-9999 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
   
   @layer components {
     .save-button {
-      @apply py-1  px-3 inline-flex items-center gap-x-2 text-sm font-medium text-[12px] h-6 rounded-sm border-1 border-white bg-gray-100 text-gray-500 hover:bg-[#F1FBFF] dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#454F65]  dark:text-gray-400/* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+      @apply py-1  px-3 inline-flex items-center gap-x-2 text-sm font-medium text-[12px] h-6 rounded-sm border-1 border-white bg-gray-100 text-gray-500 hover:bg-[#F1FBFF] dark:bg-[#313131] dark:border dark:border-gray-700 dark:shadow-neutral-700/70 dark:hover:bg-[#404040]  dark:text-gray-400/* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
     }
   }
 
@@ -180,13 +180,13 @@
   
   @layer components {
     .search-buttons {
-      @apply py-[0px] px-3 inline-flex items-center gap-x-2 text-sm font-medium  text-[13px] rounded-sm border-1 border-white bg-gray-100 text-gray-500 hover:bg-[#F1FBFF] dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#454F65]  dark:text-gray-400/* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+      @apply py-[0px] px-3 inline-flex items-center gap-x-2 text-sm font-medium  text-[12.5px] rounded-sm border-1 border-white bg-gray-100 text-gray-500 hover:bg-[#F1FBFF] dark:bg-[#313131] dark:border dark:border-gray-700 dark:shadow-neutral-700/70 dark:hover:bg-[#404040]  dark:text-gray-400/* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
     }
   }
 
   @layer components {
     .save-css {
-      @apply py-[6px] px-4 inline-flex justify-center items-center gap-2 rounded-md border-1 border-white  bg-gray-50 text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 transition-all text-[12px] shrink-0 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+      @apply py-[6px] px-4 inline-flex justify-center items-center gap-2 rounded-md border-1 border-white  bg-gray-50 text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 transition-all text-[12px] shrink-0 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !!!DEL*/
     }
   }
 
@@ -194,50 +194,26 @@
 
     @layer components {
     .Open-a-Different-Project {
-      @apply mt-8 py-[6px] px-4 inline-flex justify-center items-center gap-2 rounded-md border  border-white bg-gray-100 text-gray-500 hover:bg-[#F1FBFF] dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#454F65]  dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 transition-all text-[12px] shrink-0 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+      @apply mt-8 py-[6px] px-4 inline-flex justify-center items-center gap-2 rounded-md border  border-white bg-gray-100 text-gray-500 hover:bg-[#F1FBFF] dark:bg-[#313131] dark:border dark:border-gray-700 dark:shadow-neutral-700/70 dark:hover:bg-[#404040]  dark:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 transition-all text-[12px] shrink-0 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
     }
   }
-
-
-  @layer components {
-    .accordion-D-L-S {
-      @apply  py-1 inline-flex items-center gap-x-3 w-full  font-[DejaVu_Sans] text-[13px] text-start text-gray-600 hover:text-gray-800 rounded-lg /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
-    }
-  } 
-
 
   @layer components {
     .accordion-D-L-S-G {
-      @apply  py-1 inline-flex items-center gap-x-3 w-full  font-[DejaVu_Sans] text-[13px] text-start text-gray-600 hover:text-gray-800  dark:hover:text-gray-300 rounded-lg  dark:text-gray-400/* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+      @apply  py-1 inline-flex items-center gap-x-3 w-full  font-[DejaVu_Sans] text-[12.5px] text-start text-gray-600 hover:text-gray-800  dark:hover:text-gray-300 rounded-lg  dark:text-gray-400/* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
     }
   } 
 
-  @layer components {
-    .textblock-D-L-S-Art {
-      @apply block text-sm font-[DejaVu_Sans] text-[14px] text-gray-500 text-center /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
-    }
-  }
 
   @layer components {
-    .textblock-1-Art {
-      @apply block text-sm font-[DejaVu_Sans] text-[12px] text-gray-700 text-center /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
-    }
-  }
-
-  @layer components {
-    .textblock-2-Css-Editor-labels {
+    .Css-Editor-labels{
       @apply  text-sm font-[DejaVu_Sans] text-[12px] text-gray-700 text-center dark:text-gray-400 
     }
   }
 
-  @layer components {
-    .textblock-2-Css-Editor-labels2 {
-      @apply  text-sm font-[DejaVu_Sans] text-[12px] text-gray-700 text-justify dark:text-gray-400
-    }
-  }
 
   @layer components {
-    .textblock-2-Css-Editor-Dropdown {
+    .Css-Editor-Dropdown {
       @apply block text-sm  font-[DejaVu_Sans] text-[12px] text-gray-700 text-center
     }
   }
@@ -255,28 +231,28 @@
 
         @layer components {
     .active-drawing-info-h2 {
-      @apply text-[14px]  font-[DejaVu_Sans] text-[#60a5fa] mb-1.5
+      @apply text-[13px]  font-[DejaVu_Sans] text-[#60a5fa] mb-1.5
     }
   }
 
        @layer components {
     .fill-type-button {
       @apply w-40 shrink py-[6px] px-3 pr-3 border border-gray-200 rounded-md focus:border-gray-200 focus:ring-gray-200  font-[DejaVu_Sans] text-[12px] 
-     text-gray-700 text-start  h-[40px]   flex justify-between items-center outline-gray-100 dark:bg-[#3A4150] dark:border-gray-500 dark:shadow-neutral-700/70  dark:focus:border-gray-400 dark:text-gray-400
+     text-gray-700 text-start  h-[40px]   flex justify-between items-center outline-gray-100 dark:bg-[#313131] dark:border-gray-700 dark:shadow-neutral-700/70  dark:focus:border-gray-400 dark:text-gray-400
     }
   }
   
        @layer components {
     .fill-pattern-options {
       @apply absolute hidden  w-full max-h-48 border border-gray-200 rounded-md shadow-md focus:border-gray-200 focus:ring-gray-200  font-[DejaVu_Sans] text-[12px] 
-     text-gray-700 text-start  h-[40px]    justify-between items-center outline-gray-100 dark:bg-[#3A4150] dark:border-gray-500 dark:shadow-neutral-700/70  dark:focus:border-gray-400 dark:text-gray-400 
+     text-gray-700 text-start  h-[40px]    justify-between items-center outline-gray-100 dark:bg-[#313131] dark:border-gray-700 dark:shadow-neutral-700/70  dark:focus:border-gray-400 dark:text-gray-400 
      overflow-y-auto  py-2 px-4 text-sm   hover:bg-gray-100  
     }
   }
 
   @layer components {
-    .textblock-3-ReadOnly {
-      @apply h-[40px] px-3 w-full  border-1 border-gray-100 rounded-md  font-[DejaVu_Sans] text-[12px] focus:border-gray-200 focus:ring-gray-200 bg-gray-50 text-green-700 text-center  dark:bg-[#455269] dark:border-neutral-700 dark:shadow-neutral-700/70/* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    .readOnly {
+      @apply h-[40px] px-3 w-full  border-1 border-gray-100 rounded-md  font-[DejaVu_Sans] text-[12px] focus:border-gray-200 focus:ring-gray-200 bg-gray-50 text-green-700 text-center  dark:bg-[#3B3B3B] dark:border-neutral-700 dark:shadow-neutral-700/70/* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
     }
   }
 
@@ -308,7 +284,7 @@
   
    @layer components {
     .radio{
-      @apply   inline-flex items-center gap-x-2.5 py-2.5 px-3   border  text-gray-800 -mt-px first:rounded-s-sm   last:rounded-e-md -ms-px   bg-white border-gray-200 dark:bg-[#3A4150] dark:border dark:border-gray-600 dark:shadow-neutral-700/70 
+      @apply   inline-flex items-center gap-x-2.5 py-2.5 px-3   border  text-gray-800 -mt-px first:rounded-s-sm   last:rounded-e-md -ms-px   bg-white border-gray-200 dark:bg-[#313131] dark:border dark:border-gray-600 dark:shadow-neutral-700/70 
     }
   }
 
@@ -322,7 +298,7 @@
 
    @layer components {
     .dashedlines{
-      @apply py-[6px] px-3 w-25  rounded-md  focus:border-gray-200  focus:ring-gray-100  bg-white border-gray-200 dark:bg-[#454f65]  dark:border-gray-500 dark:shadow-neutral-700/70 dark:focus:border-gray-400
+      @apply py-[6px] px-3 w-25  rounded-md  focus:border-gray-200  focus:ring-gray-100  bg-white border-gray-200 dark:bg-[#404040]  dark:border-gray-700 dark:shadow-neutral-700/70 dark:focus:border-gray-400
        dark:focus:ring-gray-600 
     }
   }
@@ -331,31 +307,38 @@
   @layer components {
     .dropdown{
       @apply w-40 shrink py-[6px] px-3 pr-3 border border-gray-200 rounded-md focus:border-gray-200 focus:ring-gray-200 block font-[DejaVu_Sans] text-[12px] 
-     text-gray-700 text-start  h-[40px] dark:bg-[#3A4150] dark:border-gray-500 dark:shadow-neutral-700/70  dark:focus:border-gray-400 dark:text-gray-400 ; 
+     text-gray-700 text-start  h-[40px] dark:bg-[#313131] dark:border-gray-700 dark:shadow-neutral-700/70  dark:focus:border-gray-400 dark:text-gray-400 ; 
     }
   }
 
-   @layer components {
-    .dropdownV2{
-      @apply  flex items-center gap-x-4     shrink cursor-pointer bg-white border border-gray-200 rounded-lg 
-    }
-  }
 
   @layer components {
-    .coloris-input-pattern-editor {
+    .coloris-input-pattern-editor-left {
+      @apply p-1 h-10 w-10 block  border-5 border-gray-200 cursor-pointer rounded-lg z-9999 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
+    }
+  }
+
+    @layer components {
+    .coloris-input-pattern-editor-right {
       @apply p-1 h-10 w-10 block  border-5 border-gray-200 cursor-pointer rounded-lg z-9999 /* 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) */
     }
   }
 
   @layer components {
     .pattern-editor-panel {
-      @apply  absolute w-74 bg-white rounded-[10px] shadow-md p-3  dark:bg-[#3A4150]  dark:shadow-neutral-700/70
+      @apply  absolute w-74 bg-white rounded-[10px] shadow-md p-3  dark:bg-[#313131]  dark:shadow-neutral-700/70
+    }
+  } 
+
+    @layer components {
+    .close-pattern-editor {
+      @apply  inline-flex items-center  justify-between text-gray-500 hover:text-gray-800 text-[17px] px-2 py-[0.26rem] bg-gray-200 hover:bg-[#F1FBFF] border border-gray-200 rounded-l-none rounded-r-sm leading-none  dark:bg-[#545962]  dark:border-[#545962] dark:shadow-neutral-700/70 dark:focus:border-gray-400  dark:focus:ring-gray-600  dark:hover:bg-[#6B7283] 
     }
   } 
 
    @layer components {
     .pattern-rotate {
-      @apply   pl-0 w-12  bg-white rounded-md text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none   border-gray-300 dark:bg-[#3A4150] dark:border dark:border-gray-500 dark:shadow-neutral-700/70 dark:hover:bg-[#818a9c]
+      @apply   pl-0 w-12  bg-white rounded-md text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none   border-gray-300 dark:bg-[#313131] dark:border dark:border-gray-700 dark:shadow-neutral-700/70 dark:hover:bg-[#545962]
     }
   } 
 
@@ -367,7 +350,7 @@
 
   @layer components {
     .pattern-editor-sections {
-      @apply  text-center text-[12px]  font-[DejaVu_Sans]  bg-gray-200   rounded-sm justify-self-end-safe  text-gray-700   mb-3 mt-1    h-[20px]  w-[150px]   border-gray-300 dark:bg-[#818a9c] dark:border-dashed dark:border-gray-500 dark:shadow-neutral-700/70
+      @apply  text-center text-[12px]  font-[DejaVu_Sans]  bg-gray-200   rounded-sm justify-self-end-safe  text-gray-700  dark:text-gray-400  m-4    w-[150px]   border-gray-300 dark:bg-[#545962] dark:border-dashed dark:border-gray-700 dark:shadow-neutral-700/70
     }
   }
 
@@ -378,25 +361,20 @@
   }
 
     @layer components {
-    .startpage1 {
+    .startpage-h1 {
       @apply text-lg font-[DejaVu_Sans]   text-gray-700 mt-15  pl-200 pb-0 dark:text-gray-400
     }
   }
 
-    @layer components {
-    .startpage1-V {
-      @apply text-lg font-[DejaVu_Sans]   text-gray-700 mt-35 ml-10   pb-120 pr-8
-    }
-  }
   
       @layer components {
-    .startpage2 {
+    .startpage-p {
       @apply  font-light text-gray-500 -mt-0 mb-6 font-[DejaVu_Sans]   pl-240 pb-0
     }
   }
 
     @layer components {
-    .startpage3 {
+    .startpage-h2 {
       @apply text-lg font-[DejaVu_Sans]   text-gray-700 mb-3 dark:text-gray-400
     }
   }
@@ -434,81 +412,49 @@
  }
 
 
-/* Style for the PATTERN EDITOR pickers */
-.clr-pattern .clr-picker.clr-open {
-  position: absolute;
-  /* Adjust these values to position the pattern picker where you want it */
-  margin-top: -280px; 
-  margin-left: -20px;
-  border-radius: 10px;
-}
 
-.clr-picker.clr-editor.clr-default.clr-open.clr-top{
-  position: absolute;
-  margin-top: -30px;
-  margin-left: -85px;
-  border-radius: 10px;
-  scale: 100%;
-}
+
 
 .clr-picker.clr-editor.clr-light.clr-open.clr-top{
   position: absolute;
-  margin-top: -30px;
-  margin-left: -85px;
+  margin-top: -13px;
+  margin-left: -86px;
   border-radius: 10px;
   scale: 100%;
 }
 
-.clr-picker.clr-picker.clr-editor.clr-light.clr-open.clr-left.clr-top{
-  position: absolute;
-  margin-top: -30px;
-  margin-left:  -4px;
-  border-radius: 10px;
-  scale: 100%;
-}
-
-
-.clr-picker.clr-pattern.clr-light.clr-open.clr-top{
+.clr-picker.clr-default.clr-light.clr-open.clr-left.clr-top{
   position: absolute;
   margin-top: -10px;
-  margin-left: -263px;
+  margin-left: -265px;
   border-radius: 10px;
   scale: 100%;
 }
 
-/* .clr-picker.clr-pattern.clr-light.clr-open.clr-left.clr-top{
-  position: absolute;
-  width: 15.3%;
-  margin-top: -237px;
-  margin-left: -36px;
-  border-radius: 10px;
-  scale: 100%;
-} */
-
-.clr-picker.clr-pattern.clr-light.clr-open.clr-left.clr-top{
+.clr-picker.clr-patternleft.clr-light.clr-open{
   position: absolute;
   margin-top: -10px;
-  margin-left: -238px;
+  margin-left: -266px;
   border-radius: 10px;
   scale: 100%;
 }
 
-.clr-picker.clr-pattern.clr-light.clr-open{
+
+.clr-picker.clr-patternrigrht.clr-light.clr-open.clr-left{
   position: absolute;
-  margin-top: -303px;
-  margin-left: -238px;
+  margin-top: -10px;
+  margin-left: -241px;
   border-radius: 10px;
   scale: 100%;
 }
 
-.clr-picker .clr-pattern .clr-light.clr-open{
-    position: absolute;
-  margin-top: -303px;
-  margin-left: -238px;
+.clr-picker.clr-editorfont.clr-light.clr-open.clr-top{
+  position: absolute;
+  margin-top: -13px;
+  margin-left: -86px;
   border-radius: 10px;
   scale: 100%;
 }
-
 
 .clr-swatches {
   order: 2;
