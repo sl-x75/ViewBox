@@ -448,6 +448,14 @@
   scale: 100%;
 }
 
+.clr-picker.clr-editor.clr-light.clr-open.clr-left.clr-top{
+  position: absolute;
+  margin-top: -13px;
+  margin-left: 0px;
+  border-radius: 10px;
+  scale: 100%;
+}
+
 .clr-picker.clr-editorfont.clr-light.clr-open.clr-top{
   position: absolute;
   margin-top: -13px;
