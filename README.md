@@ -46,7 +46,7 @@ Info Bar: This central, context-aware bar provides critical information:
 3. It warns you if a pattern is already used by another rule and provides a button to Create a Copy. This opens a dialog to save the pattern with a new, unique ID, allowing you to style it independently.
 4. It advises you to save the internal CSS to disk if the corresponding .css file is missing from the project's assets folder, enabling editing.
 When you select an element in the viewer, this panel will populate with controls specific to that element's type (e.g., text controls for text, fill/stroke controls for shapes).
-Something for the .Predefined-Text . You can create dedicated rule to each text element by adding a class in the EPSet_Annotation which the picker will detect.  
+For the .PredefinedType-TEXT  and .PredefinedType-LINEWORK you can create dedicated rule to each element by adding a class in the EPSet_Annotation which the picker will detect. 
 
 ### Pattern Editor
 To the right of the pattern dropdown list, you'll find a small Pattern Preview. Clicking this preview opens the Pattern Editor, where you can apply transformations (scale, rotate) and styles (fill, stroke) to the individual geometric elements inside the selected pattern.
