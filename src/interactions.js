@@ -217,14 +217,34 @@ export function enablePicker(svg) {
         return;
     }
 
+    const findClass = (classes, prefix) => classes.find(cls => cls.startsWith(prefix));
     const findAllClasses = (classes, prefix) => classes.filter(cls => cls.startsWith(prefix));
+    
+    // ADD THIS NEW HELPER:
+    const filterOutCategories = (classes) => {
+      return classes.filter(cls => 
+        !cls.startsWith('material-category-') && 
+        !cls.startsWith('layer-material-category-')
+      );
+    };
     
     let idealSelector = null;
     const searchPriority = [];
-    const materialClasses = findAllClasses(elementClasses, 'material-');
-    const layerMaterialClasses = findAllClasses(elementClasses, 'layer-material-');
-    const parentLayerMaterialClasses = findAllClasses(parentClasses, 'layer-material-');
+    const allMaterialClasses = findAllClasses(elementClasses, 'material-');
+    const materialClasses = filterOutCategories(allMaterialClasses);
+    
+    const allLayerMaterialClasses = findAllClasses(elementClasses, 'layer-material-');
+    const layerMaterialClasses = filterOutCategories(allLayerMaterialClasses);
+    
+    const allParentLayerMaterialClasses = findAllClasses(parentClasses, 'layer-material-');
+    const parentLayerMaterialClasses = filterOutCategories(allParentLayerMaterialClasses);
     const predefinedTypeClass = elementClasses.find(cls => cls.startsWith('PredefinedType-'));
+    
+    console.log('All material classes:', allMaterialClasses);
+    console.log('Filtered material classes:', materialClasses);
+    console.log('All layer-material classes:', allLayerMaterialClasses);
+    console.log('Filtered layer-material classes:', layerMaterialClasses);
+    console.log('Filtered parent layer-material classes:', parentLayerMaterialClasses);
 
     // Helper function to determine if a material is a compound (multi-layer) material
     function isCompoundMaterial(materialClass, elementClasses) {
